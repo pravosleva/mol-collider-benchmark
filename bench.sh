@@ -129,6 +129,7 @@ node --expose-gc "$PROJECT_DIR/run.mjs"
 
 echo "[4/4] Генерация ./results/last-benchmark.svg и обновление ./README.md..."
 node "$PROJECT_DIR/generate-svg.mjs"
+node "$PROJECT_DIR/generate-png.mjs"
 node "$PROJECT_DIR/update-readme.mjs"
 
 END_TS=$(date +%s)

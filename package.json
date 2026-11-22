@@ -6,6 +6,7 @@
   "scripts": {
     "bench": "bash bench.sh",
     "upd:svg": "node ~/projects/mol-collider-benchmark/generate-svg.mjs",
+    "upd:png": "node ~/projects/mol-collider-benchmark/generate-png.mjs",
     "upd:readme": "node ~/projects/mol-collider-benchmark/update-readme.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +16,7 @@
   "dependencies": {
     "@pravosleva/reactive-engine": "^3.0.4",
     "@reatom/core": "^1001.3.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@solidjs/signals": "^2.0.3",
     "effector": "^23.4.4",
     "mol_wire_lib": "^1.0.1850"
