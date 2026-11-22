@@ -94,7 +94,7 @@ ${tableRows}
    * \`Retained (B/iter)\` — остаточное удержание памяти после принудительного двойного вызова \`global.gc()\`.
 4. **Запуск стенда:**
    \`\`\`bash
-   bash check.sh
+   bash bench.sh
    \`\`\`
 `
 
