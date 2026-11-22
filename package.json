@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "bench": "bash bench.sh",
+    "upd:svg": "node ~/projects/mol-collider-check/generate-svg.mjs",
+    "upd:readme": "node ~/projects/mol-collider-check/update-readme.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
