@@ -1,0 +1,20 @@
+{
+  "name": "mol-collider-check",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bench": "bash bench.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pravosleva/reactive-engine": "^3.0.4",
+    "@reatom/core": "^1001.3.0",
+    "@solidjs/signals": "^2.0.3",
+    "effector": "^23.4.4",
+    "mol_wire_lib": "^1.0.1850"
+  }
+}
