@@ -28,7 +28,7 @@ const tableRows = data.results
 
 const markdown = `# Локальный бенчмарк на графе \`$bog_collider\`
 
-Автоматически сгенерированный отчёт сравнения реактивных движков на графе из [\`b-on-g/collider\`](https://github.com).
+Автоматически сгенерированный отчёт сравнения реактивных движков на графе из [\`b-on-g/collider\`](https://github.com/b-on-g/collider).
 
 ![Результаты последнего бенчмарка](./results/last-benchmark.svg)
 
