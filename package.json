@@ -1,24 +1,34 @@
 {
   "name": "mol-collider-benchmark",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=22.20.0"
+  },
   "scripts": {
     "bench": "bash bench.sh",
+    "report": "node generate-svg.mjs && node generate-png.mjs && node update-readme.mjs",
     "upd:svg": "node ~/projects/mol-collider-benchmark/generate-svg.mjs",
     "upd:png": "node ~/projects/mol-collider-benchmark/generate-png.mjs",
     "upd:readme": "node ~/projects/mol-collider-benchmark/update-readme.mjs",
+    "_check": "node --expose-gc run.mjs --only=mobx && node --expose-gc run.mjs --only=effector",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/core": "^22.3.0",
     "@pravosleva/reactive-engine": "^3.0.4",
+    "@preact/signals-core": "^1.14.5",
     "@reatom/core": "^1001.3.0",
     "@resvg/resvg-js": "^2.6.2",
     "@solidjs/signals": "^2.0.3",
+    "@vue/reactivity": "^3.5.46",
+    "alien-signals": "^3.2.1",
     "effector": "^23.4.4",
-    "mol_wire_lib": "^1.0.1850"
+    "mobx": "^7.1.7",
+    "mol_wire_lib": "^1.0.1852"
   }
 }

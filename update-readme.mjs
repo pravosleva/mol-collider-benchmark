@@ -27,12 +27,12 @@ const legend = `## Легенда колонок
 const tableRows = data.results
   .map((r) => {
     const isFirst = r.Rank === 1
-    const engineName = isFirst ? `**${r.Engine}**` : r.Engine
+    const engineName = isFirst ? `**${ r.Engine }**` : r.Engine
     const ops = isFirst
-      ? `**${Number(r['ops/sec']).toLocaleString('ru-RU')}**`
-      : Number(r['ops/sec']).toLocaleString('ru-RU')
-    const ratio = isFirst ? `**${r.Ratio}**` : r.Ratio
-    return `| ${r.Rank} | ${engineName} | \`${r['hard() calls']}\` | ${Number(r['Best Time (ms)']).toFixed(2)} | ${ops} | ${r['Alloc (B/iter)']} | ${Number(r['Retained (B/iter)']).toFixed(3)} | ${ratio} |`
+      ? `**${ Number(r[ 'ops/sec' ]).toLocaleString('ru-RU') }**`
+      : Number(r[ 'ops/sec' ]).toLocaleString('ru-RU')
+    const ratio = isFirst ? `**${ r.Ratio }**` : r.Ratio
+    return `| ${ r.Rank } | ${ engineName } | \`${ r[ 'hard() calls' ] }\` | ${ Number(r[ 'Best Time (ms)' ]).toFixed(2) } | ${ ops } | ${ r[ 'Alloc (B/iter)' ] } | ${ Number(r[ 'Retained (B/iter)' ]).toFixed(3) } | ${ ratio } |`
   })
   .join('\n')
 
@@ -84,18 +84,18 @@ const markdown = `# Локальный бенчмарк на графе \`$bog_c
 
 ## Параметры стенда
 
-* **Дата замера:** ${dateFormatted}
-* **Среда:** Node.js \`${data.nodeVersion}\` (\`${data.platform}\`)
-* **Процессор:** \`${data.cpuModel}\`
-* **Нагрузка:** \`${data.iterations.toLocaleString('ru-RU')}\` двухшаговых итераций × \`${data.samples}\` контрольных прогона (учитывается минимальное время после JIT-прогрева)
+* **Дата замера:** ${ dateFormatted }
+* **Среда:** Node.js \`${ data.nodeVersion }\` (\`${ data.platform }\`)
+* **Процессор:** \`${ data.cpuModel }\`
+* **Нагрузка:** \`${ data.iterations.toLocaleString('ru-RU') }\` двухшаговых итераций × \`${ data.samples }\` контрольных прогона (учитывается минимальное время после JIT-прогрева)
 * **Артефакты:** [\`./results/last-benchmark.json\`](./results/last-benchmark.json) · [\`./results/last-benchmark.svg\`](./results/last-benchmark.svg)
 
 ## Сводная таблица результатов
 
-${tableHeader}
-${tableRows}
+${ tableHeader }
+${ tableRows }
 
-${legend}
+${ legend }
 
 ## Методология и V8 JIT
 
@@ -108,9 +108,33 @@ ${legend}
    \`\`\`bash
    bash bench.sh
    \`\`\`
+
+## Запуск стенда \`bench.sh\`
+
+Скрипт \`bench.sh\` автоматизирует весь цикл: установку зависимостей, прогрев V8 JIT, прогон замеров (\`run.mjs\`) и генерацию отчётов (\`./results/last-benchmark.json\`, \`./results/last-benchmark.svg\`, \`./results/last-benchmark.png\` и \`README.md\`).
+
+\`\`\`bash
+bash bench.sh
+\`\`\`
+
+При первом запуске (если отсутствует \`node_modules\`) скрипт автоматически установит пакеты из \`package.json\` (при недоступности сети сработает оффлайн-фолбэк из локального кэша). При повторных запусках шаг установки пропускается.
+
+### Поддерживаемые флаги
+
+| Флаг | Описание |
+| :--- | :--- |
+| \`--install\` | Обнуляет \`node_modules\` и принудительно переустанавливает зависимости по версиям из \`package.json\` / \`package-lock.json\`. |
+| \`--update\` | Удаляет \`node_modules\` и \`package-lock.json\`, загружает самые свежие версии (\`@latest\`) всех пакетов из npm и обновляет \`package.json\`. |
+| \`--local\` | Подключает локальную сборку \`@pravosleva/reactive-engine\` из соседнего репозитория (\`~/projects/reactive-engine/dist\`) через симлинк вместо пакета из npm. |
+
+Флаги можно комбинировать в любом порядке:
+
+\`\`\`bash
+bash bench.sh --update --local
+\`\`\`
 `
 
 fs.writeFileSync(new URL('./README.md', import.meta.url), markdown, 'utf8')
-console.log('📝 Корневой ./README.md успешно обновлён!')
+console.log('Корневой ./README.md успешно обновлён!')
 
 process.exit(0)

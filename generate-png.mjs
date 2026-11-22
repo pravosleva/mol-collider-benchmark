@@ -19,8 +19,8 @@ const svgContent = fs.readFileSync(svgPath, 'utf8')
 // Извлекаем размеры холста из атрибутов <svg width="..." height="...">
 const widthMatch = svgContent.match(/<svg[^>]*\bwidth="(\d+)"/)
 const heightMatch = svgContent.match(/<svg[^>]*\bheight="(\d+)"/)
-const width = widthMatch ? Number(widthMatch) : 920
-const height = heightMatch ? Number(heightMatch) : 760
+const width = widthMatch ? Number(widthMatch[ 1 ]) : 920
+const height = heightMatch ? Number(heightMatch[ 1 ]) : 737
 
 let rendered = false
 
@@ -32,7 +32,7 @@ try {
   })
   const pngBuffer = resvg.render().asPng()
   fs.writeFileSync(pngPath, pngBuffer)
-  console.log('🖼️  PNG сгенерирован через @resvg/resvg-js (2x Retina): ./results/last-benchmark.png')
+  console.log('PNG сгенерирован через @resvg/resvg-js (2x Retina): ./results/last-benchmark.png')
   rendered = true
 } catch {
   // Пакет не установлен — переходим к системным утилитам
@@ -41,33 +41,34 @@ try {
 // 2. Фолбэк: через rsvg-convert (если установлен в системе)
 if (!rendered) {
   try {
-    execFileSync('rsvg-convert', ['-z', '2', svgPath, '-o', pngPath], { stdio: 'ignore' })
-    console.log('🖼️  PNG сгенерирован через rsvg-convert (2x Retina): ./results/last-benchmark.png')
+    execFileSync('rsvg-convert', [ '-z', '2', svgPath, '-o', pngPath ], { stdio: 'ignore' })
+    console.log('PNG сгенерирован через rsvg-convert (2x Retina): ./results/last-benchmark.png')
     rendered = true
   } catch {
     // rsvg-convert отсутствует — пробуем headless Chrome / Chromium
   }
 }
 
-// 3. Фолбэк: через Google Chrome / Chromium в headless-режиме
+// 3. Фолбэк: через Google Chrome / Chromium (точный размер вьюпорта в --headless=old)
 if (!rendered) {
-  const browsers = ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser']
+  const browsers = [ 'google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser' ]
   for (const bin of browsers) {
     try {
       execFileSync(
         bin,
         [
-          '--headless',
+          '--headless=old',
           '--disable-gpu',
           '--hide-scrollbars',
-          `--screenshot=${pngPath}`,
-          `--window-size=${width},${height}`,
+          '--default-background-color=0d1117',
+          `--screenshot=${ pngPath }`,
+          `--window-size=${ width },${ height }`,
           '--force-device-scale-factor=2',
-          `file://${svgPath}`,
+          `file://${ svgPath }`,
         ],
         { stdio: 'ignore' }
       )
-      console.log(`🖼️  PNG сгенерирован через ${bin} (2x Retina): ./results/last-benchmark.png`)
+      console.log(`🖼️  PNG сгенерирован через ${ bin } (2x Retina): ./results/last-benchmark.png`)
       rendered = true
       break
     } catch {

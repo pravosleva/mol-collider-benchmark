@@ -4,130 +4,139 @@ set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
 cd "$PROJECT_DIR"
 
-START_TS=$(date +%s)
+# Проверка минимальной версии Node.js (>= 22.20.0)
+REQUIRED_NODE="22.20.0"
+CURRENT_NODE="$(node -v | sed 's/^v//')"
 
-echo "======================================================================"
-echo "🚀 Запуск локального стенда \$bog_collider (Node.js $(node -v))"
-echo "======================================================================"
-
-if [ ! -f package.json ]; then
-  echo "[1/4] Инициализация package.json..."
-  npm init -y >/dev/null
-  npm pkg set type="module" >/dev/null
-else
-  echo "[1/4] Конфигурация package.json готова"
+if [ "$(printf '%s\n' "$REQUIRED_NODE" "$CURRENT_NODE" | sort -V | head -n1)" != "$REQUIRED_NODE" ]; then
+  echo "❌ Требуется Node.js >= v${REQUIRED_NODE} (текущая версия: v${CURRENT_NODE})"
+  exit 1
 fi
 
-mkdir -p node_modules/@pravosleva node_modules/@solidjs node_modules/@reatom
+USE_LOCAL=false
+FORCE_INSTALL=false
+UPDATE_LATEST=false
 
-echo "[2/4] Проверка и линковка локальных зависимостей..."
+for arg in "$@"; do
+  case "$arg" in
+    --local) USE_LOCAL=true ;;
+    --install) FORCE_INSTALL=true ;;
+    --update) UPDATE_LATEST=true ;;
+  esac
+done
 
-# 1. @pravosleva/reactive-engine
+START_TS=$(date +%s)
+CACHE_DIR="$HOME/.cache/mol-collider/node_modules"
+
+echo "======================================================================"
+echo "🚀 Запуск стенда \$bog_collider (Node.js v${CURRENT_NODE})"
+echo "======================================================================"
+
+PACKAGES=(
+  "@angular/core"
+  "@pravosleva/reactive-engine"
+  "@preact/signals-core"
+  "@reatom/core"
+  "@resvg/resvg-js"
+  "@solidjs/signals"
+  "@vue/reactivity"
+  "@vue/shared"
+  "alien-signals"
+  "effector"
+  "mobx"
+  "mol_wire_lib"
+)
+
+# Функция сохранения установленных пакетов в локальный кэш ~/.cache/mol-collider
+save_to_local_cache() {
+  mkdir -p "$CACHE_DIR/@pravosleva" "$CACHE_DIR/@solidjs" "$CACHE_DIR/@reatom" "$CACHE_DIR/@vue" "$CACHE_DIR/@angular" "$CACHE_DIR/@preact" "$CACHE_DIR/@resvg"
+  for pkg in "${PACKAGES[@]}"; do
+    if [ -d "node_modules/$pkg" ] && [ ! -L "node_modules/$pkg" ]; then
+      rm -rf "$CACHE_DIR/$pkg"
+      cp -r "node_modules/$pkg" "$CACHE_DIR/$pkg"
+    fi
+  done
+}
+
+# Функция оффлайн-восстановления (из ~/.cache/mol-collider или соседних проектов)
+restore_offline() {
+  echo "Сетевой реестр npm недоступен — восстанавливаем из локального кэша..."
+  mkdir -p node_modules/@pravosleva node_modules/@solidjs node_modules/@reatom node_modules/@vue node_modules/@angular node_modules/@preact node_modules/@resvg
+
+  for pkg in "${PACKAGES[@]}"; do
+    if [ -e "node_modules/$pkg" ]; then
+      continue
+    fi
+
+    # 1. Приоритет для собственного репозитория reactive-engine
+    if [ "$pkg" = "@pravosleva/reactive-engine" ] && [ -d "$HOME/projects/reactive-engine/dist" ]; then
+      ln -s "$HOME/projects/reactive-engine" "node_modules/$pkg"
+      echo "   ✔ $pkg -> $HOME/projects/reactive-engine"
+      continue
+    fi
+
+    # 2. Проверяем ~/.cache/mol-collider
+    if [ -d "$CACHE_DIR/$pkg" ]; then
+      cp -r "$CACHE_DIR/$pkg" "node_modules/$pkg"
+      echo "   ✔ $pkg -> кэш (~/.cache/mol-collider)"
+      continue
+    fi
+
+    # 3. Ищем в соседних проектах ~/projects
+    found=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/$pkg" ! -path "$PROJECT_DIR/*" 2>/dev/null | head -n 1 || true)
+    if [ -n "$found" ]; then
+      ln -s "$found" "node_modules/$pkg"
+      echo "   ✔ $pkg -> $found"
+    fi
+  done
+}
+
+# 1. Управление зависимостями
+if [ "$UPDATE_LATEST" = true ]; then
+  echo "[1/4] Обнуление node_modules и загрузка самых свежих версий (@latest)..."
+  rm -rf node_modules package-lock.json
+  LATEST_SPECS=()
+  for pkg in "${PACKAGES[@]}"; do
+    LATEST_SPECS+=("${pkg}@latest")
+  done
+
+  if npm install "${LATEST_SPECS[@]}" --no-audit --no-fund 2>/dev/null; then
+    save_to_local_cache
+    echo "   ✔ Все пакеты обновлены до @latest и сохранены в локальный кэш"
+  else
+    restore_offline
+  fi
+elif [ ! -d "node_modules" ] || [ "$FORCE_INSTALL" = true ]; then
+  echo "[1/4] Обнуление и установка зависимостей из package.json..."
+  rm -rf node_modules
+  if npm install --prefer-offline --no-audit --no-fund 2>/dev/null; then
+    save_to_local_cache
+  else
+    restore_offline
+  fi
+else
+  echo "[1/4] Зависимости в node_modules уже готовы"
+fi
+
+# 2. Опциональное подключение локальной сборки @pravosleva/reactive-engine (--local)
 LOCAL_ENGINE_DIR="$HOME/projects/reactive-engine"
-if [ -d "$LOCAL_ENGINE_DIR/dist" ]; then
+if [ "$USE_LOCAL" = true ] && [ -d "$LOCAL_ENGINE_DIR/dist" ]; then
+  echo "[2/4] Подключение локальной сборки @pravosleva/reactive-engine из $LOCAL_ENGINE_DIR..."
+  mkdir -p node_modules/@pravosleva
   rm -rf node_modules/@pravosleva/reactive-engine
   ln -s "$LOCAL_ENGINE_DIR" node_modules/@pravosleva/reactive-engine
-  echo "   ✔ @pravosleva/reactive-engine -> $LOCAL_ENGINE_DIR"
-fi
-
-# 2. @solidjs/signals
-if [ ! -e "node_modules/@solidjs/signals" ]; then
-  LOCAL_SOLID=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/@solidjs/signals" 2>/dev/null | head -n 1 || true)
-  if [ -n "$LOCAL_SOLID" ]; then
-    ln -s "$LOCAL_SOLID" node_modules/@solidjs/signals
-    echo "   ✔ @solidjs/signals -> $LOCAL_SOLID"
-  fi
+elif [ "$USE_LOCAL" = true ]; then
+  echo "[2/4] Локальная сборка $LOCAL_ENGINE_DIR/dist не найдена — используем пакет из node_modules"
 else
-  echo "   ✔ @solidjs/signals (локальный)"
+  echo "[2/4] Используются пакеты из node_modules (для локальной сборки: bash bench.sh --local)"
 fi
 
-# 3. mol_wire_lib
-if [ ! -e "node_modules/mol_wire_lib" ]; then
-  LOCAL_MOL=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/mol_wire_lib" 2>/dev/null | head -n 1 || true)
-  if [ -n "$LOCAL_MOL" ] && [ "$LOCAL_MOL" != "$PROJECT_DIR/node_modules/mol_wire_lib" ]; then
-    ln -s "$LOCAL_MOL" node_modules/mol_wire_lib
-    echo "   ✔ mol_wire_lib -> $LOCAL_MOL"
-  fi
-else
-  echo "   ✔ mol_wire_lib (локальный)"
-fi
-
-# 4. mobx
-if [ ! -e "node_modules/mobx" ]; then
-  LOCAL_MOBX=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/mobx" 2>/dev/null | head -n 1 || true)
-  if [ -n "$LOCAL_MOBX" ] && [ "$LOCAL_MOBX" != "$PROJECT_DIR/node_modules/mobx" ]; then
-    ln -s "$LOCAL_MOBX" node_modules/mobx
-    echo "   ✔ mobx -> $LOCAL_MOBX"
-  fi
-else
-  echo "   ✔ mobx (локальный)"
-fi
-
-# 5. effector
-if [ ! -e "node_modules/effector" ]; then
-  LOCAL_EFFECTOR=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/effector" 2>/dev/null | head -n 1 || true)
-  if [ -n "$LOCAL_EFFECTOR" ] && [ "$LOCAL_EFFECTOR" != "$PROJECT_DIR/node_modules/effector" ]; then
-    ln -s "$LOCAL_EFFECTOR" node_modules/effector
-    echo "   ✔ effector -> $LOCAL_EFFECTOR"
-  fi
-else
-  echo "   ✔ effector (локальный)"
-fi
-
-# 6. @reatom/core
-if [ ! -e "node_modules/@reatom/core" ]; then
-  LOCAL_REATOM=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/@reatom/core" 2>/dev/null | head -n 1 || true)
-  if [ -n "$LOCAL_REATOM" ] && [ "$LOCAL_REATOM" != "$PROJECT_DIR/node_modules/@reatom/core" ]; then
-    ln -s "$LOCAL_REATOM" node_modules/@reatom/core
-    echo "   ✔ @reatom/core -> $LOCAL_REATOM"
-  fi
-else
-  echo "   ✔ @reatom/core (локальный)"
-fi
-
-# 7. Ищем локально установленный @vue/reactivity
-if [ ! -e "node_modules/@vue/reactivity" ]; then
-  LOCAL_VUE=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/@vue/reactivity" 2>/dev/null | head -n 1 || true)
-  if [ -n "$LOCAL_VUE" ] && [ "$LOCAL_VUE" != "$PROJECT_DIR/node_modules/@vue/reactivity" ]; then
-    echo "🔗 Подключение локального @vue/reactivity из $LOCAL_VUE..."
-    mkdir -p node_modules/@vue
-    ln -s "$LOCAL_VUE" node_modules/@vue/reactivity
-  fi
-fi
-
-# 8. Ищем локально установленный @angular/core
-if [ ! -e "node_modules/@angular/core" ]; then
-  LOCAL_ANGULAR=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/@angular/core" 2>/dev/null | head -n 1 || true)
-  if [ -n "$LOCAL_ANGULAR" ] && [ "$LOCAL_ANGULAR" != "$PROJECT_DIR/node_modules/@angular/core" ]; then
-    echo "🔗 Подключение локального @angular/core из $LOCAL_ANGULAR..."
-    mkdir -p node_modules/@angular
-    ln -s "$LOCAL_ANGULAR" node_modules/@angular/core
-  fi
-fi
-
-# 9. @preact/signals-core
-if [ ! -e "node_modules/@preact/signals-core" ]; then
-  LOCAL_PREACT=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/@preact/signals-core" 2>/dev/null | head -n 1 || true)
-  if [ -n "$LOCAL_PREACT" ] && [ "$LOCAL_PREACT" != "$PROJECT_DIR/node_modules/@preact/signals-core" ]; then
-    echo "🔗 Подключение локального @preact/signals-core из $LOCAL_PREACT..."
-    mkdir -p node_modules/@preact
-    ln -s "$LOCAL_PREACT" node_modules/@preact/signals-core
-  fi
-fi
-
-# 10. alien-signals
-if [ ! -e "node_modules/alien-signals" ]; then
-  LOCAL_ALIEN=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/alien-signals" 2>/dev/null | head -n 1 || true)
-  if [ -n "$LOCAL_ALIEN" ] && [ "$LOCAL_ALIEN" != "$PROJECT_DIR/node_modules/alien-signals" ]; then
-    echo "🔗 Подключение локального alien-signals из $LOCAL_ALIEN..."
-    ln -s "$LOCAL_ALIEN" node_modules/alien-signals
-  fi
-fi
-
-echo "[3/4] ⚡ Прогрев JIT и прогон 3 серий по 5 000 итераций (подождите ~10–15 сек)..."
+# 3. Прогон бенчмарка
+echo "[3/4] Прогрев V8 JIT и прогон 3 серий по 5 000 итераций..."
 node --expose-gc "$PROJECT_DIR/run.mjs"
 
-echo "[4/4] Генерация ./results/last-benchmark.svg и обновление ./README.md..."
+# 4. Генерация артефактов (SVG, PNG, README.md)
+echo "[4/4] Генерация SVG, PNG (2x Retina) и обновление README.md..."
 node "$PROJECT_DIR/generate-svg.mjs"
 node "$PROJECT_DIR/generate-png.mjs"
 node "$PROJECT_DIR/update-readme.mjs"
@@ -136,7 +145,20 @@ END_TS=$(date +%s)
 ELAPSED=$((END_TS - START_TS))
 
 echo "======================================================================"
-echo "✅ Бенчмарк успешно завершён за ${ELAPSED} сек."
+echo "✅ Готово за ${ELAPSED} сек. Артефакты сохранены в ./results/ и ./README.md"
 echo "======================================================================"
+
+# Проверка сгенерированных артефактов
+for artifact in "results/last-benchmark.json" "results/last-benchmark.svg" "results/last-benchmark.png" "README.md"; do
+  if [ ! -s "$PROJECT_DIR/$artifact" ]; then
+    echo "❌ Ошибка: артефакт $artifact не создан или пуст!"
+    exit 1
+  fi
+done
+
+if command -v file >/dev/null 2>&1; then
+  PNG_INFO=$(file -b "$PROJECT_DIR/results/last-benchmark.png")
+  echo "🔍 Проверка PNG: $PNG_INFO"
+fi
 
 exit 0
