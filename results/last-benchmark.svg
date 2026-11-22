@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="621" viewBox="0 0 920 621">
-  <rect width="920" height="621" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.5" />
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="737" viewBox="0 0 920 737">
+  <rect width="920" height="737" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.5" />
   <text x="32" y="38" fill="#f0f6fc" font-family="sans-serif" font-size="20" font-weight="700">$bog_collider Benchmark - Throughput &amp; Memory</text>
   <text x="32" y="62" fill="#8b949e" font-family="monospace" font-size="12">Node.js v22.20.0 (linux x64) | Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz</text>
   <text x="32" y="82" fill="#8b949e" font-family="monospace" font-size="12">5,000 iterations x 3 runs (Best Time after JIT warmup) | Higher ops/s is better</text>
@@ -8,81 +8,101 @@
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#10b981" font-family="monospace" font-size="15" font-weight="700">#1</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="700">@pravosleva/reactive-engine</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 1209.4 B/it | Retained: 0.035 B/it</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 1245.5 B/it | Retained: 0.035 B/it</text>
     <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
     <rect x="315" y="21" width="360" height="12" rx="4" fill="#10b981" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">8,152 ops/s</text>
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">8,378 ops/s</text>
     <text x="882" y="32" text-anchor="end" fill="#10b981" font-family="monospace" font-size="13" font-weight="700">1.00×</text>
   </g>
   <g transform="translate(0, 163)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#2</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">MobX (comparer.structural)</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 3096.6 B/it | Retained: 0.256 B/it</text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@vue/reactivity</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 3256.6 B/it | Retained: 0.000 B/it</text>
     <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
-    <rect x="315" y="21" width="331" height="12" rx="4" fill="#3b82f6" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,489 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.09×</text>
+    <rect x="315" y="21" width="327" height="12" rx="4" fill="#3b82f6" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,617 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.10×</text>
   </g>
   <g transform="translate(0, 221)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#3</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@vue/reactivity</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 3256.6 B/it | Retained: 0.000 B/it</text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@angular/core (Signals)</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 3408.8 B/it | Retained: 0.000 B/it</text>
     <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
-    <rect x="315" y="21" width="326" height="12" rx="4" fill="#6366f1" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,388 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.10×</text>
+    <rect x="315" y="21" width="320" height="12" rx="4" fill="#6366f1" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,445 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.13×</text>
   </g>
   <g transform="translate(0, 279)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#4</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@angular/core (Signals)</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 3408.8 B/it | Retained: 0.000 B/it</text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">MobX (comparer.structural)</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 3015.6 B/it | Retained: 0.333 B/it</text>
     <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
-    <rect x="315" y="21" width="315" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,144 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.14×</text>
+    <rect x="315" y="21" width="313" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,283 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.15×</text>
   </g>
   <g transform="translate(0, 337)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#5</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">$mol ($mol_wire_let)</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 1756.1 B/it | Retained: 0.000 B/it</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Alloc: 1752.4 B/it | Retained: 0.000 B/it</text>
     <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
-    <rect x="315" y="21" width="301" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">6,814 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.20×</text>
+    <rect x="315" y="21" width="277" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">6,449 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.30×</text>
   </g>
   <g transform="translate(0, 395)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#6</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">Reatom (@reatom/core)</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Alloc: 1323.8 B/it | Retained: 304.000 B/it</text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">alien-signals</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Alloc: 1680.8 B/it | Retained: 0.000 B/it</text>
     <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
-    <rect x="315" y="21" width="185" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">4,199 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.94×</text>
+    <rect x="315" y="21" width="216" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">5,027 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.67×</text>
   </g>
   <g transform="translate(0, 453)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#7</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">SolidJS 2 (@solidjs/signals)</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 6 (E,F,H,E,F,H) | Alloc: 1999.3 B/it | Retained: 403.986 B/it</text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@preact/signals-core</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Alloc: 1456.1 B/it | Retained: 0.000 B/it</text>
     <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
-    <rect x="315" y="21" width="173" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">3,910 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">2.09×</text>
+    <rect x="315" y="21" width="200" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">4,661 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.80×</text>
   </g>
   <g transform="translate(0, 511)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#8</text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">Reatom (@reatom/core)</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Alloc: 1334.1 B/it | Retained: 304.000 B/it</text>
+    <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
+    <rect x="315" y="21" width="191" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">4,440 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.89×</text>
+  </g>
+  <g transform="translate(0, 569)">
+    <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
+    <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#9</text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">SolidJS 2 (@solidjs/signals)</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 6 (E,F,H,E,F,H) | Alloc: 2004.1 B/it | Retained: 403.986 B/it</text>
+    <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
+    <rect x="315" y="21" width="172" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">3,995 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">2.10×</text>
+  </g>
+  <g transform="translate(0, 627)">
+    <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
+    <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#10</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">Effector</text>
     <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 6 (E,F,H,E,F,H) | Alloc: 4225.1 B/it | Retained: 67.866 B/it</text>
     <rect x="315" y="21" width="360" height="12" rx="4" fill="#21262d" />
-    <rect x="315" y="21" width="148" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">3,342 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">2.44×</text>
+    <rect x="315" y="21" width="157" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">3,654 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">2.29×</text>
   </g>
-  <text x="32" y="601" fill="#6e7681" font-family="monospace" font-size="11">Generated: 2026-11-22T10:53:55.578Z | Graph: A,B -&gt; C,D -&gt; E,F -&gt; G -&gt; H,I,J (hard = fib(18))</text>
+  <text x="32" y="717" fill="#6e7681" font-family="monospace" font-size="11">Generated: 2026-11-22T11:00:45.735Z | Graph: A,B -&gt; C,D -&gt; E,F -&gt; G -&gt; H,I,J (hard = fib(18))</text>
 </svg>

@@ -514,6 +514,108 @@ try {
   console.log('⛔ @angular/core пропущен:', err.message)
 }
 
+// 9. @preact/signals-core (идиоматичный API без кастомного equals в computed)
+try {
+  const { signal, computed, effect, batch } = await import('@preact/signals-core')
+
+  results.push(
+    runBenchmark('@preact/signals-core', ({ hard, res }) => {
+      const A = signal(0)
+      const B = signal(0)
+      const C = computed(() => (A.value % 2) + (B.value % 2))
+      const D = computed(() =>
+        numbers.map((i) => ({ x: i + (A.value % 2) - (B.value % 2) }))
+      )
+      const E = computed(() => hard(C.value + A.value + D.value.at(0).x, 'E'))
+      const F = computed(() => hard(D.value.at(2).x || B.value, 'F'))
+      const G = computed(
+        () => C.value + (C.value || E.value % 2) + D.value.at(4).x + F.value
+      )
+
+      effect(() => res.push(hard(G.value, 'H')))
+      effect(() => res.push(G.value))
+      effect(() => res.push(hard(F.value, 'J')))
+
+      return (i) => {
+        res.length = 3
+        batch(() => {
+          B.value = 1
+          A.value = 1 + i * 2
+        })
+        batch(() => {
+          A.value = 2 + i * 2
+          B.value = 2
+        })
+      }
+    })
+  )
+} catch (err) {
+  console.log('⛔ @preact/signals-core пропущен:', err.message)
+}
+
+// 10. alien-signals (идиоматичный API без кастомного equals в computed)
+try {
+  const alienMod = await import('alien-signals')
+  const { signal, computed, effect } = alienMod
+  const startBatch = alienMod.startBatch ?? alienMod.batch
+  const endBatch = alienMod.endBatch
+
+  results.push(
+    runBenchmark('alien-signals', ({ hard, res }) => {
+      const A = signal(0)
+      const B = signal(0)
+      const C = computed(() => (A() % 2) + (B() % 2))
+      const D = computed(() =>
+        numbers.map((i) => ({ x: i + (A() % 2) - (B() % 2) }))
+      )
+      const E = computed(() => hard(C() + A() + D().at(0).x, 'E'))
+      const F = computed(() => hard(D().at(2).x || B(), 'F'))
+      const G = computed(
+        () => C() + (C() || E() % 2) + D().at(4).x + F()
+      )
+
+      effect(() => {
+        res.push(hard(G(), 'H'))
+      })
+      effect(() => {
+        res.push(G())
+      })
+      effect(() => {
+        res.push(hard(F(), 'J'))
+      })
+
+      const runBatch = (fn) => {
+        if (typeof startBatch === 'function' && typeof endBatch === 'function') {
+          startBatch()
+          try {
+            fn()
+          } finally {
+            endBatch()
+          }
+        } else if (typeof startBatch === 'function') {
+          startBatch(fn)
+        } else {
+          fn()
+        }
+      }
+
+      return (i) => {
+        res.length = 3
+        runBatch(() => {
+          B(1)
+          A(1 + i * 2)
+        })
+        runBatch(() => {
+          A(2 + i * 2)
+          B(2)
+        })
+      }
+    })
+  )
+} catch (err) {
+  console.log('⛔ alien-signals пропущен:', err.message)
+}
+
 // Колонка с относительным коэффициентом отставания от лидера
 // Сортируем по убыванию ops/sec (самый быстрый движок сверху)
 results.sort((a, b) => b['ops/sec'] - a['ops/sec'])

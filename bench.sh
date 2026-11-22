@@ -105,6 +105,25 @@ if [ ! -e "node_modules/@angular/core" ]; then
   fi
 fi
 
+# 9. @preact/signals-core
+if [ ! -e "node_modules/@preact/signals-core" ]; then
+  LOCAL_PREACT=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/@preact/signals-core" 2>/dev/null | head -n 1 || true)
+  if [ -n "$LOCAL_PREACT" ] && [ "$LOCAL_PREACT" != "$PROJECT_DIR/node_modules/@preact/signals-core" ]; then
+    echo "🔗 Подключение локального @preact/signals-core из $LOCAL_PREACT..."
+    mkdir -p node_modules/@preact
+    ln -s "$LOCAL_PREACT" node_modules/@preact/signals-core
+  fi
+fi
+
+# 10. alien-signals
+if [ ! -e "node_modules/alien-signals" ]; then
+  LOCAL_ALIEN=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/alien-signals" 2>/dev/null | head -n 1 || true)
+  if [ -n "$LOCAL_ALIEN" ] && [ "$LOCAL_ALIEN" != "$PROJECT_DIR/node_modules/alien-signals" ]; then
+    echo "🔗 Подключение локального alien-signals из $LOCAL_ALIEN..."
+    ln -s "$LOCAL_ALIEN" node_modules/alien-signals
+  fi
+fi
+
 echo "[3/4] ⚡ Прогрев JIT и прогон 3 серий по 5 000 итераций (подождите ~10–15 сек)..."
 node --expose-gc "$PROJECT_DIR/run.mjs"
 
