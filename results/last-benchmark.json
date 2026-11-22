@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-22T10:04:23.666Z",
+  "timestamp": "2026-11-22T10:29:19.633Z",
   "nodeVersion": "v22.20.0",
   "platform": "linux x64",
   "cpuModel": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
@@ -10,61 +10,61 @@
       "Rank": 1,
       "Engine": "@pravosleva/reactive-engine",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 568.85,
-      "ops/sec": 8790,
-      "Alloc (B/iter)": 1234.7,
+      "Best Time (ms)": 568.23,
+      "ops/sec": 8799,
+      "Alloc (B/iter)": 1258.6,
       "Retained (B/iter)": 0.04,
       "Ratio": "1.00×"
     },
     {
       "Rank": 2,
-      "Engine": "$mol ($mol_wire_let)",
+      "Engine": "MobX (comparer.structural)",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 669.01,
-      "ops/sec": 7474,
-      "Alloc (B/iter)": 1759.2,
-      "Retained (B/iter)": 0,
-      "Ratio": "1.18×"
+      "Best Time (ms)": 688.77,
+      "ops/sec": 7259,
+      "Alloc (B/iter)": 3015.9,
+      "Retained (B/iter)": 0.68,
+      "Ratio": "1.21×"
     },
     {
       "Rank": 3,
-      "Engine": "MobX (comparer.structural)",
+      "Engine": "$mol ($mol_wire_let)",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 678.58,
-      "ops/sec": 7368,
-      "Alloc (B/iter)": 3096.6,
-      "Retained (B/iter)": 0.26,
-      "Ratio": "1.19×"
+      "Best Time (ms)": 696.77,
+      "ops/sec": 7176,
+      "Alloc (B/iter)": 1760.7,
+      "Retained (B/iter)": 0,
+      "Ratio": "1.23×"
     },
     {
       "Rank": 4,
       "Engine": "Reatom (@reatom/core)",
       "hard() calls": "5 (F,H,E,F,H)",
-      "Best Time (ms)": 1143.29,
-      "ops/sec": 4373,
-      "Alloc (B/iter)": 1332.6,
+      "Best Time (ms)": 1054.79,
+      "ops/sec": 4740,
+      "Alloc (B/iter)": 1331.4,
       "Retained (B/iter)": 304,
-      "Ratio": "2.01×"
+      "Ratio": "1.86×"
     },
     {
       "Rank": 5,
       "Engine": "SolidJS 2 (@solidjs/signals)",
       "hard() calls": "6 (E,F,H,E,F,H)",
-      "Best Time (ms)": 1269.42,
-      "ops/sec": 3939,
-      "Alloc (B/iter)": 2004.1,
+      "Best Time (ms)": 1217.18,
+      "ops/sec": 4108,
+      "Alloc (B/iter)": 2005,
       "Retained (B/iter)": 403.99,
-      "Ratio": "2.23×"
+      "Ratio": "2.14×"
     },
     {
       "Rank": 6,
       "Engine": "Effector",
       "hard() calls": "6 (E,F,H,E,F,H)",
-      "Best Time (ms)": 1384.87,
-      "ops/sec": 3610,
+      "Best Time (ms)": 1390.21,
+      "ops/sec": 3597,
       "Alloc (B/iter)": 4225.1,
       "Retained (B/iter)": 67.87,
-      "Ratio": "2.43×"
+      "Ratio": "2.45×"
     }
   ]
 }
