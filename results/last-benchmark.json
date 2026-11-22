@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-22T19:27:18.899Z",
+  "timestamp": "2026-11-22T23:44:12.844Z",
   "nodeVersion": "v22.20.0",
   "platform": "linux x64",
   "cpuModel": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
@@ -9,113 +9,113 @@
   "results": [
     {
       "Rank": 1,
-      "Engine": "@pravosleva/reactive-engine",
+      "Engine": "@angular/core (Signals)",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 635.06,
-      "ops/sec": 7873,
-      "Alloc (B/iter)": 1236.6,
+      "Best Time (ms)": 595.2,
+      "ops/sec": 8401,
+      "Alloc (B/iter)": 578.3,
       "Retained (B/iter)": 0.035,
-      "Version": "v3.0.4",
+      "Version": "v22.3.0",
       "Ratio": "1.00×"
     },
     {
       "Rank": 2,
-      "Engine": "@vue/reactivity",
+      "Engine": "@pravosleva/reactive-engine",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 639.29,
-      "ops/sec": 7821,
-      "Alloc (B/iter)": 426,
-      "Retained (B/iter)": 0.024,
-      "Version": "v3.5.46",
+      "Best Time (ms)": 603.08,
+      "ops/sec": 8291,
+      "Alloc (B/iter)": 1237.2,
+      "Retained (B/iter)": 0.035,
+      "Version": "v3.0.4",
       "Ratio": "1.01×"
     },
     {
       "Rank": 3,
       "Engine": "MobX (comparer.structural)",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 646.44,
-      "ops/sec": 7735,
-      "Alloc (B/iter)": 219,
-      "Retained (B/iter)": 0.072,
+      "Best Time (ms)": 607.17,
+      "ops/sec": 8235,
+      "Alloc (B/iter)": 569.4,
+      "Retained (B/iter)": 0.403,
       "Version": "v7.1.7",
       "Ratio": "1.02×"
     },
     {
       "Rank": 4,
-      "Engine": "@angular/core (Signals)",
+      "Engine": "@vue/reactivity",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 722.56,
-      "ops/sec": 6920,
-      "Alloc (B/iter)": 578.3,
-      "Retained (B/iter)": 0.035,
-      "Version": "v22.3.0",
-      "Ratio": "1.14×"
+      "Best Time (ms)": 629.42,
+      "ops/sec": 7944,
+      "Alloc (B/iter)": 426,
+      "Retained (B/iter)": 0.024,
+      "Version": "v3.5.46",
+      "Ratio": "1.06×"
     },
     {
       "Rank": 5,
       "Engine": "$mol ($mol_wire_let)",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 804.93,
-      "ops/sec": 6212,
-      "Alloc (B/iter)": 609.8,
+      "Best Time (ms)": 713.73,
+      "ops/sec": 7005,
+      "Alloc (B/iter)": 622.5,
       "Retained (B/iter)": 0,
       "Version": "v1.0.1852",
-      "Ratio": "1.27×"
+      "Ratio": "1.20×"
     },
     {
       "Rank": 6,
       "Engine": "SolidJS 2 (@solidjs/signals)",
       "hard() calls": "4 (E,H,E,H)",
-      "Best Time (ms)": 963.8,
-      "ops/sec": 5188,
-      "Alloc (B/iter)": 1357.1,
+      "Best Time (ms)": 934.84,
+      "ops/sec": 5348,
+      "Alloc (B/iter)": 1361.6,
       "Retained (B/iter)": 381.234,
       "Version": "v2.0.3",
-      "Ratio": "1.52×"
-    },
-    {
-      "Rank": 7,
-      "Engine": "alien-signals",
-      "hard() calls": "5 (F,H,E,F,H)",
-      "Best Time (ms)": 996.77,
-      "ops/sec": 5016,
-      "Alloc (B/iter)": 797.2,
-      "Retained (B/iter)": 0,
-      "Version": "v3.2.1",
       "Ratio": "1.57×"
     },
     {
-      "Rank": 8,
+      "Rank": 7,
       "Engine": "@preact/signals-core",
       "hard() calls": "5 (F,H,E,F,H)",
-      "Best Time (ms)": 1046.12,
-      "ops/sec": 4780,
+      "Best Time (ms)": 960.47,
+      "ops/sec": 5206,
       "Alloc (B/iter)": 423.8,
       "Retained (B/iter)": 0.003,
       "Version": "v1.14.5",
-      "Ratio": "1.65×"
+      "Ratio": "1.61×"
     },
     {
-      "Rank": 9,
+      "Rank": 8,
       "Engine": "Reatom (@reatom/core)",
       "hard() calls": "5 (F,H,E,F,H)",
-      "Best Time (ms)": 1117.57,
-      "ops/sec": 4474,
+      "Best Time (ms)": 1054.95,
+      "ops/sec": 4740,
       "Alloc (B/iter)": 1464.8,
       "Retained (B/iter)": 336,
       "Version": "v1001.3.0",
-      "Ratio": "1.76×"
+      "Ratio": "1.77×"
+    },
+    {
+      "Rank": 9,
+      "Engine": "alien-signals",
+      "hard() calls": "5 (F,H,E,F,H)",
+      "Best Time (ms)": 1055.89,
+      "ops/sec": 4735,
+      "Alloc (B/iter)": 797.2,
+      "Retained (B/iter)": 0,
+      "Version": "v3.2.1",
+      "Ratio": "1.77×"
     },
     {
       "Rank": 10,
       "Engine": "Effector",
       "hard() calls": "6 (E,F,H,E,F,H)",
-      "Best Time (ms)": 1422.34,
-      "ops/sec": 3515,
+      "Best Time (ms)": 1288.44,
+      "ops/sec": 3881,
       "Alloc (B/iter)": 1765.8,
       "Retained (B/iter)": 67.851,
       "Version": "v23.4.4",
-      "Ratio": "2.24×"
+      "Ratio": "2.16×"
     }
   ]
 }

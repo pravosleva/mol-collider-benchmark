@@ -488,7 +488,7 @@ const ENGINES = [
         const C = computed(() => (A() % 2) + (B() % 2), 'C')
         const D = computed(
           () => numbers.map((i) => ({ x: i + (A() % 2) - (B() % 2) })),
-          'D'
+          { name: 'D', isEqual: equals }
         )
         const E = computed(() => hard(C() + A() + D().at(0).x, 'E'), 'E')
         const F = computed(() => hard(D().at(2).x || B(), 'F'), 'F')

@@ -19,15 +19,26 @@ const escapeXml = (str) =>
 const width = 920
 const rowHeight = 58
 const headerHeight = 105
-const footerHeight = 52
+const footerHeight = 70
 const height = headerHeight + data.results.length * rowHeight + footerHeight
 
 const maxOps = Math.max(...data.results.map((r) => Number(r['ops/sec']) || 0), 1)
 const barMaxWidth = 310
 const barStartX = 365
+const iterations = Number(data.iterations) || 5000
+const fastestUsPerIter = (Number(data.results.at(0)['Best Time (ms)']) / iterations) * 1000
 
 const rowsSvg = data.results
   .map((r, idx) => {
+    const usPerIter = (Number(r['Best Time (ms)']) / iterations) * 1000
+    const deltaUs = usPerIter - fastestUsPerIter
+    const deltaColor =
+      deltaUs < 10 ? '#8b949e' : deltaUs <= 30 ? '#f59e0b' : '#f87171'
+    const deltaSpan =
+      r.Rank > 1
+        ? ` | <tspan fill="${ deltaColor }">+${ deltaUs.toFixed(2) } μs/it</tspan>`
+        : ''
+
     const y = headerHeight + idx * rowHeight
     const isFirst = r.Rank === 1
     const opsVal = Number(r['ops/sec']) || 0
@@ -51,7 +62,7 @@ const rowsSvg = data.results
       `    <rect x="20" y="2" width="${ width - 40 }" height="${ rowHeight - 6 }" rx="8" fill="${ rowBg }" />`,
       `    <text x="42" y="34" fill="${ rankColor }" font-family="monospace" font-size="15" font-weight="700">#${ escapeXml(r.Rank) }</text>`,
       `    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="${ fontWeight }">${ escapeXml(titleText) }</text>`,
-      `    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">${ escapeXml(subtitle) }</text>`,
+      `    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">${ escapeXml(subtitle) }${ deltaSpan }</text>`,
       `    <rect x="${ barStartX }" y="21" width="${ barMaxWidth }" height="12" rx="4" fill="#21262d" />`,
       `    <rect x="${ barStartX }" y="21" width="${ barWidth }" height="12" rx="4" fill="${ barColor }" />`,
       `    <text x="${ barStartX + barMaxWidth + 16 }" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">${ escapeXml(opsVal.toLocaleString('en-US')) } ops/s</text>`,
@@ -63,7 +74,7 @@ const rowsSvg = data.results
 
 const headerSub1 = `Node.js ${ data.nodeVersion } (${ data.platform }) | ${ data.cpuModel }`
 const headerSub2 = `${ data.iterations.toLocaleString('en-US') } iterations x ${ data.samples } runs (Best Time after JIT warmup) | Higher ops/s is better`
-const footerText = `Generated: ${ data.timestamp } | Graph: A,B -> C,D -> E,F -> G -> H,I,J (hard = fib(18))`
+const footerLine1 = `Generated: ${ data.timestamp } | Graph: A,B -> C,D -> E,F -> G -> H,I,J (hard = fib(18))`
 
 const svgContent = [
   `<?xml version="1.0" encoding="UTF-8"?>`,
@@ -74,7 +85,8 @@ const svgContent = [
   `  <text x="32" y="62" fill="#8b949e" font-family="monospace" font-size="12">${ escapeXml(headerSub1) }</text>`,
   `  <text x="32" y="82" fill="#8b949e" font-family="monospace" font-size="12">${ escapeXml(headerSub2) }</text>`,
   rowsSvg,
-  `  <text x="32" y="${ height - 20 }" fill="#6e7681" font-family="monospace" font-size="11">${ escapeXml(footerText) }</text>`,
+  `  <text x="32" y="${ height - 36 }" fill="#6e7681" font-family="monospace" font-size="11">${ escapeXml(footerLine1) }</text>`,
+  `  <text x="32" y="${ height - 18 }" fill="#6e7681" font-family="monospace" font-size="11">Delta vs #1: <tspan fill="#8b949e">&lt;10 μs noise</tspan> | <tspan fill="#f59e0b">10–30 μs minor overhead</tspan> | <tspan fill="#f87171">&gt;30 μs extra hard() calls</tspan></text>`,
   `</svg>`,
 ].join('\n') + '\n'
 

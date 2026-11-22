@@ -19,8 +19,8 @@ const svgContent = fs.readFileSync(svgPath, 'utf8')
 // Извлекаем размеры холста из атрибутов <svg width="..." height="...">
 const widthMatch = svgContent.match(/<svg[^>]*\bwidth="(\d+)"/)
 const heightMatch = svgContent.match(/<svg[^>]*\bheight="(\d+)"/)
-const width = widthMatch ? Number(widthMatch[ 1 ]) : 920
-const height = heightMatch ? Number(heightMatch[ 1 ]) : 737
+const width = widthMatch ? Number(widthMatch[1]) : 920
+const height = heightMatch ? Number(heightMatch[1]) : 737
 
 let rendered = false
 
@@ -41,7 +41,7 @@ try {
 // 2. Фолбэк: через rsvg-convert (если установлен в системе)
 if (!rendered) {
   try {
-    execFileSync('rsvg-convert', [ '-z', '2', svgPath, '-o', pngPath ], { stdio: 'ignore' })
+    execFileSync('rsvg-convert', ['-z', '2', svgPath, '-o', pngPath], { stdio: 'ignore' })
     console.log('PNG сгенерирован через rsvg-convert (2x Retina): ./results/last-benchmark.png')
     rendered = true
   } catch {
@@ -51,7 +51,7 @@ if (!rendered) {
 
 // 3. Фолбэк: через Google Chrome / Chromium (точный размер вьюпорта в --headless=old)
 if (!rendered) {
-  const browsers = [ 'google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser' ]
+  const browsers = ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser']
   for (const bin of browsers) {
     try {
       execFileSync(
@@ -68,7 +68,7 @@ if (!rendered) {
         ],
         { stdio: 'ignore' }
       )
-      console.log(`🖼️  PNG сгенерирован через ${ bin } (2x Retina): ./results/last-benchmark.png`)
+      console.log(`PNG сгенерирован через ${ bin } (2x Retina): ./results/last-benchmark.png`)
       rendered = true
       break
     } catch {
