@@ -1,3 +1,4 @@
+import { deepEqual as equals } from '@pravosleva/reactive-engine'
 import assert from 'node:assert/strict'
 import { performance } from 'node:perf_hooks'
 import fs from 'node:fs'
@@ -83,7 +84,7 @@ function runBenchmark(name, setupFn) {
     'Best Time (ms)': Number(bestTimeMs.toFixed(2)),
     'ops/sec': opsPerSec,
     'Alloc (B/iter)': Number(bestAllocBytes.toFixed(1)),
-    'Retained (B/iter)': Number(bestRetainedBytes.toFixed(2)),
+    'Retained (B/iter)': Number(bestRetainedBytes.toFixed(3)),
   }
 }
 
@@ -263,8 +264,6 @@ try {
 // 5. Effector (createStore + combine + createEvent + watch)
 try {
   const { createStore, createEvent, combine } = await import('effector')
-  const reMod = await import('@pravosleva/reactive-engine')
-  const { deepEqual: equals } = reMod
 
   results.push(
     runBenchmark('Effector', ({ hard, res }) => {
@@ -360,6 +359,159 @@ try {
   )
 } catch (err) {
   console.log('⛔ @reatom/core пропущен:', err.message)
+}
+
+// 7. @vue/reactivity (Vue 3)
+try {
+  const { ref, computed, effect } = await import('@vue/reactivity')
+
+  results.push(
+    runBenchmark('@vue/reactivity', ({ hard, res }) => {
+      const queue = new Set()
+      const flushVue = () => {
+        for (const job of queue) {
+          queue.delete(job)
+          job()
+        }
+      }
+
+      const A = ref(0)
+      const B = ref(0)
+      const C = computed(() => (A.value % 2) + (B.value % 2))
+
+      let prevD
+      const D = computed(() => {
+        const next = numbers.map((i) => ({ x: i + (A.value % 2) - (B.value % 2) }))
+        if (prevD !== undefined && equals(prevD, next)) {
+          return prevD
+        }
+        prevD = next
+        return next
+      })
+
+      const E = computed(() => hard(C.value + A.value + D.value.at(0).x, 'E'))
+      const F = computed(() => hard(D.value.at(2).x || B.value, 'F'))
+      const G = computed(
+        () => C.value + (C.value || E.value % 2) + D.value.at(4).x + F.value
+      )
+
+      let lastH
+      const runnerH = effect(
+        () => {
+          const g = G.value
+          if (Object.is(g, lastH)) return
+          lastH = g
+          res.push(hard(g, 'H'))
+        },
+        { scheduler: () => queue.add(runnerH) }
+      )
+
+      let lastI
+      const runnerI = effect(
+        () => {
+          const g = G.value
+          if (Object.is(g, lastI)) return
+          lastI = g
+          res.push(g)
+        },
+        { scheduler: () => queue.add(runnerI) }
+      )
+
+      let lastJ
+      const runnerJ = effect(
+        () => {
+          const f = F.value
+          if (Object.is(f, lastJ)) return
+          lastJ = f
+          res.push(hard(f, 'J'))
+        },
+        { scheduler: () => queue.add(runnerJ) }
+      )
+
+      return (i) => {
+        res.length = 3
+        B.value = 1
+        A.value = 1 + i * 2
+        flushVue()
+
+        A.value = 2 + i * 2
+        B.value = 2
+        flushVue()
+      }
+    })
+  )
+} catch (err) {
+  console.log('⛔ @vue/reactivity пропущен:', err.message)
+}
+
+// 8. @angular/core (Angular Signals)
+try {
+  const ngSignals = await import('@angular/core/primitives/signals')
+  const { createSignal, createComputed, createWatch, setActiveConsumer } = ngSignals
+
+  results.push(
+    runBenchmark('@angular/core (Signals)', ({ hard, res }) => {
+      const queue = new Set()
+      const flushAngular = () => {
+        for (const w of queue) {
+          queue.delete(w)
+          w.run()
+        }
+      }
+
+      const [A, setA] = createSignal(0)
+      const [B, setB] = createSignal(0)
+      const C = createComputed(() => (A() % 2) + (B() % 2))
+      // В primitives/signals вторым аргументом передаётся сама функция сравнения (equals)
+      const D = createComputed(
+        () => numbers.map((i) => ({ x: i + (A() % 2) - (B() % 2) })),
+        equals
+      )
+      const E = createComputed(() => hard(C() + A() + D().at(0).x, 'E'))
+      const F = createComputed(() => hard(D().at(2).x || B(), 'F'))
+      const G = createComputed(
+        () => C() + (C() || E() % 2) + D().at(4).x + F()
+      )
+
+      const watchH = createWatch(
+        () => res.push(hard(G(), 'H')),
+        () => queue.add(watchH),
+        true
+      )
+      const watchI = createWatch(
+        () => res.push(G()),
+        () => queue.add(watchI),
+        true
+      )
+      const watchJ = createWatch(
+        () => res.push(hard(F(), 'J')),
+        () => queue.add(watchJ),
+        true
+      )
+
+      const prevConsumer = setActiveConsumer(null)
+      try {
+        watchH.run()
+        watchI.run()
+        watchJ.run()
+      } finally {
+        setActiveConsumer(prevConsumer)
+      }
+
+      return (i) => {
+        res.length = 3
+        setB(1)
+        setA(1 + i * 2)
+        flushAngular()
+
+        setA(2 + i * 2)
+        setB(2)
+        flushAngular()
+      }
+    })
+  )
+} catch (err) {
+  console.log('⛔ @angular/core пропущен:', err.message)
 }
 
 // Колонка с относительным коэффициентом отставания от лидера

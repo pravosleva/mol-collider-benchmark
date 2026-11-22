@@ -43,7 +43,7 @@ const rowsSvg = data.results
     const rankColor = isFirst ? '#10b981' : '#8b949e'
     const fontWeight = isFirst ? '700' : '500'
 
-    const subtitle = `hard(): ${r['hard() calls']} | Alloc: ${r['Alloc (B/iter)']} B/it | Retained: ${r['Retained (B/iter)']} B/it`
+    const subtitle = `hard(): ${r['hard() calls']} | Alloc: ${r['Alloc (B/iter)']} B/it | Retained: ${Number(r['Retained (B/iter)']).toFixed(3)} B/it`
 
     return [
       `  <g transform="translate(0, ${y})">`,

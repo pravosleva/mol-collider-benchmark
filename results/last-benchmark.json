@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-22T10:32:02.702Z",
+  "timestamp": "2026-11-22T10:53:55.578Z",
   "nodeVersion": "v22.20.0",
   "platform": "linux x64",
   "cpuModel": "Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz",
@@ -10,61 +10,81 @@
       "Rank": 1,
       "Engine": "@pravosleva/reactive-engine",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 605.1,
-      "ops/sec": 8263,
-      "Alloc (B/iter)": 1260.4,
-      "Retained (B/iter)": 0.04,
+      "Best Time (ms)": 613.32,
+      "ops/sec": 8152,
+      "Alloc (B/iter)": 1209.4,
+      "Retained (B/iter)": 0.035,
       "Ratio": "1.00×"
     },
     {
       "Rank": 2,
       "Engine": "MobX (comparer.structural)",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 658.19,
-      "ops/sec": 7597,
-      "Alloc (B/iter)": 3009.1,
-      "Retained (B/iter)": 0.26,
+      "Best Time (ms)": 667.64,
+      "ops/sec": 7489,
+      "Alloc (B/iter)": 3096.6,
+      "Retained (B/iter)": 0.256,
       "Ratio": "1.09×"
     },
     {
       "Rank": 3,
-      "Engine": "$mol ($mol_wire_let)",
+      "Engine": "@vue/reactivity",
       "hard() calls": "3 (H,E,H)",
-      "Best Time (ms)": 665.68,
-      "ops/sec": 7511,
-      "Alloc (B/iter)": 1755.4,
+      "Best Time (ms)": 676.78,
+      "ops/sec": 7388,
+      "Alloc (B/iter)": 3256.6,
       "Retained (B/iter)": 0,
       "Ratio": "1.10×"
     },
     {
       "Rank": 4,
-      "Engine": "Reatom (@reatom/core)",
-      "hard() calls": "5 (F,H,E,F,H)",
-      "Best Time (ms)": 1155.29,
-      "ops/sec": 4328,
-      "Alloc (B/iter)": 1325.4,
-      "Retained (B/iter)": 304,
-      "Ratio": "1.91×"
+      "Engine": "@angular/core (Signals)",
+      "hard() calls": "3 (H,E,H)",
+      "Best Time (ms)": 699.87,
+      "ops/sec": 7144,
+      "Alloc (B/iter)": 3408.8,
+      "Retained (B/iter)": 0,
+      "Ratio": "1.14×"
     },
     {
       "Rank": 5,
-      "Engine": "SolidJS 2 (@solidjs/signals)",
-      "hard() calls": "6 (E,F,H,E,F,H)",
-      "Best Time (ms)": 1168.95,
-      "ops/sec": 4277,
-      "Alloc (B/iter)": 1998.5,
-      "Retained (B/iter)": 403.99,
-      "Ratio": "1.93×"
+      "Engine": "$mol ($mol_wire_let)",
+      "hard() calls": "3 (H,E,H)",
+      "Best Time (ms)": 733.76,
+      "ops/sec": 6814,
+      "Alloc (B/iter)": 1756.1,
+      "Retained (B/iter)": 0,
+      "Ratio": "1.20×"
     },
     {
       "Rank": 6,
+      "Engine": "Reatom (@reatom/core)",
+      "hard() calls": "5 (F,H,E,F,H)",
+      "Best Time (ms)": 1190.66,
+      "ops/sec": 4199,
+      "Alloc (B/iter)": 1323.8,
+      "Retained (B/iter)": 304,
+      "Ratio": "1.94×"
+    },
+    {
+      "Rank": 7,
+      "Engine": "SolidJS 2 (@solidjs/signals)",
+      "hard() calls": "6 (E,F,H,E,F,H)",
+      "Best Time (ms)": 1278.85,
+      "ops/sec": 3910,
+      "Alloc (B/iter)": 1999.3,
+      "Retained (B/iter)": 403.986,
+      "Ratio": "2.09×"
+    },
+    {
+      "Rank": 8,
       "Engine": "Effector",
       "hard() calls": "6 (E,F,H,E,F,H)",
-      "Best Time (ms)": 1336.46,
-      "ops/sec": 3741,
+      "Best Time (ms)": 1495.91,
+      "ops/sec": 3342,
       "Alloc (B/iter)": 4225.1,
-      "Retained (B/iter)": 67.87,
-      "Ratio": "2.21×"
+      "Retained (B/iter)": 67.866,
+      "Ratio": "2.44×"
     }
   ]
 }

@@ -85,7 +85,27 @@ else
   echo "   ✔ @reatom/core (локальный)"
 fi
 
-echo "⚡ [3/4] Прогрев JIT и прогон 3 серий по 5 000 итераций (подождите ~10–15 сек)..."
+# 7. Ищем локально установленный @vue/reactivity
+if [ ! -e "node_modules/@vue/reactivity" ]; then
+  LOCAL_VUE=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/@vue/reactivity" 2>/dev/null | head -n 1 || true)
+  if [ -n "$LOCAL_VUE" ] && [ "$LOCAL_VUE" != "$PROJECT_DIR/node_modules/@vue/reactivity" ]; then
+    echo "🔗 Подключение локального @vue/reactivity из $LOCAL_VUE..."
+    mkdir -p node_modules/@vue
+    ln -s "$LOCAL_VUE" node_modules/@vue/reactivity
+  fi
+fi
+
+# 8. Ищем локально установленный @angular/core
+if [ ! -e "node_modules/@angular/core" ]; then
+  LOCAL_ANGULAR=$(find "$HOME/projects" -maxdepth 4 -type d -path "*/node_modules/@angular/core" 2>/dev/null | head -n 1 || true)
+  if [ -n "$LOCAL_ANGULAR" ] && [ "$LOCAL_ANGULAR" != "$PROJECT_DIR/node_modules/@angular/core" ]; then
+    echo "🔗 Подключение локального @angular/core из $LOCAL_ANGULAR..."
+    mkdir -p node_modules/@angular
+    ln -s "$LOCAL_ANGULAR" node_modules/@angular/core
+  fi
+fi
+
+echo "[3/4] ⚡ Прогрев JIT и прогон 3 серий по 5 000 итераций (подождите ~10–15 сек)..."
 node --expose-gc "$PROJECT_DIR/run.mjs"
 
 echo "[4/4] Генерация ./results/last-benchmark.svg и обновление ./README.md..."
