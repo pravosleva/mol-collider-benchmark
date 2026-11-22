@@ -27,12 +27,13 @@ const legend = `## Легенда колонок
 const tableRows = data.results
   .map((r) => {
     const isFirst = r.Rank === 1
-    const engineName = isFirst ? `**${ r.Engine }**` : r.Engine
+    const label = r.Version ? `${ r.Engine } \`${ r.Version }\`` : r.Engine
+    const engineName = isFirst ? `**${ label }**` : label
     const ops = isFirst
-      ? `**${ Number(r[ 'ops/sec' ]).toLocaleString('ru-RU') }**`
-      : Number(r[ 'ops/sec' ]).toLocaleString('ru-RU')
+      ? `**${ Number(r['ops/sec']).toLocaleString('ru-RU') }**`
+      : Number(r['ops/sec']).toLocaleString('ru-RU')
     const ratio = isFirst ? `**${ r.Ratio }**` : r.Ratio
-    return `| ${ r.Rank } | ${ engineName } | \`${ r[ 'hard() calls' ] }\` | ${ Number(r[ 'Best Time (ms)' ]).toFixed(2) } | ${ ops } | ${ r[ 'Alloc (B/iter)' ] } | ${ Number(r[ 'Retained (B/iter)' ]).toFixed(3) } | ${ ratio } |`
+    return `| ${ r.Rank } | ${ engineName } | \`${ r['hard() calls'] }\` | ${ Number(r['Best Time (ms)']).toFixed(2) } | ${ ops } | ${ r['Alloc (B/iter)'] } | ${ Number(r['Retained (B/iter)']).toFixed(3) } | ${ ratio } |`
   })
   .join('\n')
 

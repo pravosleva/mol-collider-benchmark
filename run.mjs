@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import os from 'node:os'
-import { execFileSync } from 'node:child_process'
 import { performance } from 'node:perf_hooks'
 import { fileURLToPath } from 'node:url'
 import { ReactiveEngine, deepEqual as equals } from '@pravosleva/reactive-engine'
 import { execFile } from 'node:child_process'
+import path from 'node:path'
 
 const numbers = Array.from({ length: 5 }, (_, i) => i)
 const fib = (n) => (n < 2 ? 1 : fib(n - 1) + fib(n - 2))
@@ -15,6 +15,17 @@ function forceGc() {
   if (typeof global.gc === 'function') {
     global.gc()
     global.gc()
+  }
+}
+
+function getPackageVersion(pkgName) {
+  if (!pkgName) return ''
+  try {
+    const pkgPath = path.join(process.cwd(), 'node_modules', ...pkgName.split('/'), 'package.json')
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
+    return pkg.version ? `v${ pkg.version }` : ''
+  } catch {
+    return ''
   }
 }
 
@@ -89,6 +100,7 @@ function measureEngine(name, setupFn) {
 const ENGINES = [
   {
     id: 'reactive-engine',
+    pkg: '@pravosleva/reactive-engine',
     name: '@pravosleva/reactive-engine',
     run: async () =>
       measureEngine('@pravosleva/reactive-engine', ({ hard, res }) => {
@@ -125,6 +137,7 @@ const ENGINES = [
   },
   {
     id: 'vue',
+    pkg: '@vue/reactivity',
     name: '@vue/reactivity',
     run: async () => {
       const { ref, computed, effect } = await import('@vue/reactivity')
@@ -200,6 +213,7 @@ const ENGINES = [
   },
   {
     id: 'angular',
+    pkg: '@angular/core',
     name: '@angular/core (Signals)',
     run: async () => {
       const { createSignal, createComputed, createWatch, setActiveConsumer } = await import(
@@ -264,6 +278,7 @@ const ENGINES = [
   },
   {
     id: 'mobx',
+    pkg: 'mobx',
     name: 'MobX (comparer.structural)',
     run: async () => {
       const mobxPkg = await import('mobx')
@@ -306,6 +321,7 @@ const ENGINES = [
   },
   {
     id: 'mol',
+    pkg: 'mol_wire_lib',
     name: '$mol ($mol_wire_let)',
     run: async () => {
       const molWirePkg = await import('mol_wire_lib')
@@ -344,6 +360,7 @@ const ENGINES = [
   },
   {
     id: 'solid2',
+    pkg: '@solidjs/signals',
     name: 'SolidJS 2 (@solidjs/signals)',
     run: async () => {
       const solidMod = await import('@solidjs/signals')
@@ -386,6 +403,7 @@ const ENGINES = [
   },
   {
     id: 'alien-signals',
+    pkg: 'alien-signals',
     name: 'alien-signals',
     run: async () => {
       const alienMod = await import('alien-signals')
@@ -425,6 +443,7 @@ const ENGINES = [
   },
   {
     id: 'preact-signals',
+    pkg: '@preact/signals-core',
     name: '@preact/signals-core',
     run: async () => {
       const { signal, computed, effect, batch } = await import('@preact/signals-core')
@@ -459,6 +478,7 @@ const ENGINES = [
   },
   {
     id: 'reatom',
+    pkg: '@reatom/core',
     name: 'Reatom (@reatom/core)',
     run: async () => {
       const { atom, computed, notify } = await import('@reatom/core')
@@ -496,6 +516,7 @@ const ENGINES = [
   },
   {
     id: 'effector',
+    pkg: 'effector',
     name: 'Effector',
     run: async () => {
       const effPkg = await import('effector')
@@ -545,6 +566,7 @@ if (onlyArg) {
   }
   try {
     const result = await entry.run()
+    result.Version = getPackageVersion(entry.pkg)
     process.stdout.write(`__RESULT__:${ JSON.stringify(result) }\n`)
     process.exit(0)
   } catch (err) {
@@ -632,7 +654,7 @@ if (onlyArg) {
     Ratio: `${ (row['Best Time (ms)'] / fastestTime).toFixed(2) }×`,
   }))
 
-  console.log('\n📊 Сравнение на графе $bog_collider (изолированные V8-процессы, минимум из 3 прогонов):\n')
+  console.log('\nСравнение на графе $bog_collider (изолированные V8-процессы, минимум из 3 прогонов):\n')
   console.table(rankedResults)
   console.log(`
 Примечание о методологии и V8 JIT:
