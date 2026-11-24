@@ -10,8 +10,8 @@ const dateFormatted = new Date(data.timestamp).toLocaleString('ru-RU', {
 })
 
 const tableHeader = [
-  '| Rank | Engine | `hard()` calls | Best Time (ms) | ops/sec | Alloc (B/iter) | Retained (B/iter) | Ratio |',
-  '| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: |',
+  '| Rank | Engine | `hard()` calls | Best Time (ms) | ops/sec | Alloc (B/iter) | Net Alloc (B/iter) | Retained (B/iter) | Ratio |',
+  '| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |',
 ].join('\n')
 
 const legend = `## Легенда колонок
@@ -33,7 +33,8 @@ const tableRows = data.results
       ? `**${ Number(r['ops/sec']).toLocaleString('ru-RU') }**`
       : Number(r['ops/sec']).toLocaleString('ru-RU')
     const ratio = isFirst ? `**${ r.Ratio }**` : r.Ratio
-    return `| ${ r.Rank } | ${ engineName } | \`${ r['hard() calls'] }\` | ${ Number(r['Best Time (ms)']).toFixed(2) } | ${ ops } | ${ r['Alloc (B/iter)'] } | ${ Number(r['Retained (B/iter)']).toFixed(3) } | ${ ratio } |`
+    const netAlloc = r['Net Alloc (B/iter)'] ?? '-'
+    return `| **${ r.Rank }** | ${ engineName } | \`${ r['hard() calls'] }\` | \`${ r['Best Time (ms)'] }\` | \`${ r['ops/sec'] }\` | \`${ r['Alloc (B/iter)'] }\` | \`${ netAlloc }\` | \`${ Number(r['Retained (B/iter)']).toFixed(3) }\` | \`${ r.Ratio }\` |`
   })
   .join('\n')
 
@@ -143,6 +144,12 @@ bash bench.sh --update --local
 - В красную зону (\`> 30 μs\`) автоматически попадают все библиотеки, которые допустили хотя бы один лишний вызов \`hard()\` (\`4\`, \`5\` или \`6\` вызовов вместо \`3\`) — то есть не смогли отсечь невостребованную ветку \`E\` или погасить пересчёт при неизменном массиве \`D\`.
 
 _Это делает цветовую индикацию на диаграмме более осмысленной: она мгновенно отделяет **архитектурно оптимальное вычисление графа** от **лишней работы**._
+
+### Как интерпретировать метрики памяти (\`Alloc\`, \`Net Alloc\` и \`Retained\`)
+
+* **\`Alloc (B/iter)\`** — общие временные аллокации в куче V8 (Young Generation) за одну двухшаговую итерацию до вызова сборщика мусора, включая пересоздание массивов \`numbers.map(...)\` внутри самого теста (~400–500 байт/итерация).
+* **\`Net Alloc (B/iter)\`** — **чистые накладные расходы самого реактивного движка** (\`Alloc\` за вычетом базового следа \`baseline\` без реактивности). Отражает стоимость работы планировщика, пересборки зависимостей и замыканий на один тик графа.
+* **\`Retained (B/iter)\`** — остаточная память в куче V8 после двойного принудительного вызова \`global.gc()\`. **Значения \`< 0.500 B/iter\` соответствуют отсутствию утечек памяти; более высокие значения указывают на накопление кэшей или истории внутри графа.**
 `
 
 fs.writeFileSync(new URL('./README.md', import.meta.url), markdown, 'utf8')

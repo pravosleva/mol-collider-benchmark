@@ -29,6 +29,30 @@ function getPackageVersion(pkgName) {
   }
 }
 
+function measureBaseline(iterations) {
+  const res = []
+  const dummyStep = (i) => {
+    res.length = 3
+    // Имитация пересоздания массивов в узле D на двух шагах (без реактивности)
+    const d1 = numbers.map((n) => ({ x: n + ((1 + i * 2) % 2) - (1 % 2) }))
+    const d2 = numbers.map((n) => ({ x: n + ((2 + i * 2) % 2) - (2 % 2) }))
+    res.push(d1[0].x, d2[0].x, d1[2].x, d2[2].x)
+  }
+
+  for (let i = 0; i < 500; i++) dummyStep(i)
+
+  let minAlloc = Infinity
+  for (let s = 0; s < 3; s++) {
+    forceGc()
+    const before = process.memoryUsage().heapUsed
+    for (let i = 0; i < iterations; i++) dummyStep(i)
+    const after = process.memoryUsage().heapUsed
+    const perIter = Math.max(0, (after - before) / iterations)
+    if (perIter < minAlloc) minAlloc = perIter
+  }
+  return minAlloc
+}
+
 function measureEngine(name, setupFn) {
   const hardCalls = []
   const res = []
@@ -53,6 +77,7 @@ function measureEngine(name, setupFn) {
 
   // 3. Три контрольных прогона (берём минимум)
   const ITERATIONS = 5000
+  const baselineAlloc = measureBaseline(ITERATIONS)
   const SAMPLES = 3
   let bestTimeMs = Infinity
   let bestAllocBytes = Infinity
@@ -83,6 +108,7 @@ function measureEngine(name, setupFn) {
   }
 
   const opsPerSec = Math.round((ITERATIONS / bestTimeMs) * 1000)
+  const netAllocBytes = Math.max(0, bestAllocBytes - baselineAlloc)
 
   return {
     Engine: name,
@@ -90,6 +116,7 @@ function measureEngine(name, setupFn) {
     'Best Time (ms)': Number(bestTimeMs.toFixed(2)),
     'ops/sec': opsPerSec,
     'Alloc (B/iter)': Number(bestAllocBytes.toFixed(1)),
+    'Net Alloc (B/iter)': Number(netAllocBytes.toFixed(1)),
     'Retained (B/iter)': Number(bestRetainedBytes.toFixed(3)),
   }
 }

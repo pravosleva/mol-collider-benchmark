@@ -23,8 +23,8 @@ const footerHeight = 70
 const height = headerHeight + data.results.length * rowHeight + footerHeight
 
 const maxOps = Math.max(...data.results.map((r) => Number(r['ops/sec']) || 0), 1)
-const barMaxWidth = 310
-const barStartX = 365
+const barMaxWidth = 240
+const barStartX = 435
 const iterations = Number(data.iterations) || 5000
 const fastestUsPerIter = (Number(data.results.at(0)['Best Time (ms)']) / iterations) * 1000
 
@@ -55,7 +55,8 @@ const rowsSvg = data.results
     const fontWeight = isFirst ? '700' : '500'
 
     const titleText = r.Version ? `${ r.Engine } ${ r.Version }` : r.Engine
-    const subtitle = `hard(): ${ r['hard() calls'] } | Alloc: ${ r['Alloc (B/iter)'] } B/it | Retained: ${ Number(r['Retained (B/iter)']).toFixed(3) } B/it`
+    const netAlloc = r['Net Alloc (B/iter)'] ?? r['Alloc (B/iter)']
+    const subtitle = `hard(): ${ r['hard() calls'] } | Net: ${ netAlloc } B/it | Ret: ${ Number(r['Retained (B/iter)']).toFixed(3) } B/it`
 
     return [
       `  <g transform="translate(0, ${ y })">`,
@@ -79,7 +80,6 @@ const footerLine1 = `Generated: ${ data.timestamp } | Graph: A,B -> C,D -> E,F -
 const svgContent = [
   `<?xml version="1.0" encoding="UTF-8"?>`,
   `<svg xmlns="${ SVG_NS }" width="${ width }" height="${ height }" viewBox="0 0 ${ width } ${ height }">`,
-  // `<svg xmlns="http://w3.org" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`,
   `  <rect width="${ width }" height="${ height }" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.5" />`,
   `  <text x="32" y="38" fill="#f0f6fc" font-family="sans-serif" font-size="20" font-weight="700">$bog_collider Benchmark - Throughput &amp; Memory</text>`,
   `  <text x="32" y="62" fill="#8b949e" font-family="monospace" font-size="12">${ escapeXml(headerSub1) }</text>`,
