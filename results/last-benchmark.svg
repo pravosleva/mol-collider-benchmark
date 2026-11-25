@@ -8,102 +8,102 @@
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#10b981" font-family="monospace" font-size="15" font-weight="700">#1</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="700">@pravosleva/reactive-engine v3.0.4</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 1017.4 B/it | Ret: 0.026 B/it</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 978.8 B/it | Ret: 0.026 B/it</text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#10b981" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">8,271 ops/s</text>
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">8,844 ops/s</text>
     <text x="882" y="32" text-anchor="end" fill="#10b981" font-family="monospace" font-size="13" font-weight="700">1.00×</text>
   </g>
   <g transform="translate(0, 163)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#2</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@vue/reactivity v3.5.46</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 160.4 B/it | Ret: 0.029 B/it | <tspan fill="#8b949e">+4.66 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 163.2 B/it | Ret: 0.029 B/it | <tspan fill="#f59e0b">+14.38 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="231" height="12" rx="4" fill="#3b82f6" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,964 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.04×</text>
+    <rect x="435" y="21" width="213" height="12" rx="4" fill="#3b82f6" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,846 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.13×</text>
   </g>
   <g transform="translate(0, 221)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#3</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@angular/core (Signals) v22.3.0</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 318.2 B/it | Ret: 0.026 B/it | <tspan fill="#8b949e">+5.03 μs/it</tspan></text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">MobX (comparer.structural) v7.1.7</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 0 B/it | Ret: 0.408 B/it | <tspan fill="#f59e0b">+19.26 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="230" height="12" rx="4" fill="#6366f1" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,941 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.04×</text>
+    <rect x="435" y="21" width="205" height="12" rx="4" fill="#6366f1" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,557 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.17×</text>
   </g>
   <g transform="translate(0, 279)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#4</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">MobX (comparer.structural) v7.1.7</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 0 B/it | Ret: 0.384 B/it | <tspan fill="#8b949e">+7.45 μs/it</tspan></text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@angular/core (Signals) v22.3.0</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 318.7 B/it | Ret: 0.026 B/it | <tspan fill="#f59e0b">+19.42 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="226" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,791 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.06×</text>
+    <rect x="435" y="21" width="205" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,548 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.17×</text>
   </g>
   <g transform="translate(0, 337)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#5</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">$mol ($mol_wire_let) v1.0.1852</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 198.9 B/it | Ret: 0.000 B/it | <tspan fill="#f59e0b">+10.57 μs/it</tspan></text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">$mol ($mol_wire_solo) v1.0.1852</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 3 (H,E,H) | Net: 1395.6 B/it | Ret: 0.000 B/it | <tspan fill="#f87171">+33.44 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="221" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">7,606 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.09×</text>
+    <rect x="435" y="21" width="185" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">6,825 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.30×</text>
   </g>
   <g transform="translate(0, 395)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#6</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">SolidJS 2 (@solidjs/signals) v2.0.3</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 4 (E,H,E,H) | Net: 714 B/it | Ret: 381.259 B/it | <tspan fill="#f87171">+55.30 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 4 (E,H,E,H) | Net: 693.9 B/it | Ret: 381.259 B/it | <tspan fill="#f87171">+75.32 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="165" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">5,675 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.46×</text>
+    <rect x="435" y="21" width="144" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">5,308 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.67×</text>
   </g>
   <g transform="translate(0, 453)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#7</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">alien-signals v3.2.1</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 537.7 B/it | Ret: 0.029 B/it | <tspan fill="#f87171">+62.05 μs/it</tspan></text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@preact/signals-core v1.14.5</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 164.5 B/it | Ret: 0.026 B/it | <tspan fill="#f87171">+78.33 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="159" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">5,466 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.51×</text>
+    <rect x="435" y="21" width="142" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">5,225 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.69×</text>
   </g>
   <g transform="translate(0, 511)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#8</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">@preact/signals-core v1.14.5</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 165 B/it | Ret: 0.026 B/it | <tspan fill="#f87171">+64.67 μs/it</tspan></text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">alien-signals v3.2.1</text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 537 B/it | Ret: 0.029 B/it | <tspan fill="#f87171">+100.47 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="156" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">5,389 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.53×</text>
+    <rect x="435" y="21" width="127" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">4,683 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.89×</text>
   </g>
   <g transform="translate(0, 569)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#9</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">Reatom (@reatom/core) v1001.3.0</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 1193.9 B/it | Ret: 336.032 B/it | <tspan fill="#f87171">+88.96 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 1289.7 B/it | Ret: 336.032 B/it | <tspan fill="#f87171">+102.00 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="138" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">4,765 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.74×</text>
+    <rect x="435" y="21" width="126" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">4,650 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">1.90×</text>
   </g>
   <g transform="translate(0, 627)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="monospace" font-size="15" font-weight="700">#10</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="500">Effector v23.4.4</text>
-    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 6 (E,F,H,E,F,H) | Net: 1505.5 B/it | Ret: 67.877 B/it | <tspan fill="#f87171">+157.92 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">hard(): 6 (E,F,H,E,F,H) | Net: 1514.2 B/it | Ret: 67.877 B/it | <tspan fill="#f87171">+146.37 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="104" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">3,587 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">2.31×</text>
+    <rect x="435" y="21" width="105" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">3,854 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="monospace" font-size="13" font-weight="700">2.29×</text>
   </g>
-  <text x="32" y="719" fill="#6e7681" font-family="monospace" font-size="11">Generated: 2026-11-24T07:06:08.710Z | Graph: A,B -&gt; C,D -&gt; E,F -&gt; G -&gt; H,I,J (hard = fib(18))</text>
+  <text x="32" y="719" fill="#6e7681" font-family="monospace" font-size="11">Generated: 2026-11-25T16:41:39.422Z | Graph: A,B -&gt; C,D -&gt; E,F -&gt; G -&gt; H,I,J (hard = fib(18))</text>
   <text x="32" y="737" fill="#6e7681" font-family="monospace" font-size="11">Delta vs #1: <tspan fill="#8b949e">&lt;10 μs noise</tspan> | <tspan fill="#f59e0b">10–30 μs minor overhead</tspan> | <tspan fill="#f87171">&gt;30 μs extra hard() calls</tspan></text>
 </svg>

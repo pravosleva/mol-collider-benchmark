@@ -349,37 +349,70 @@ const ENGINES = [
   {
     id: 'mol',
     pkg: 'mol_wire_lib',
-    name: '$mol ($mol_wire_let)',
+    name: '$mol ($mol_wire_solo)',
     run: async () => {
       const molWirePkg = await import('mol_wire_lib')
-      const Let = molWirePkg.default?.$mol_wire_let ?? molWirePkg.$mol_wire_let
-      return measureEngine('$mol ($mol_wire_let)', ({ hard, res }) => {
-        const { A, B, C, D, E, F, G, H, I, J } = Let({
-          A: (n) => n ?? 0,
-          B: (n) => n ?? 0,
-          C: () => (A() % 2) + (B() % 2),
-          D: () => numbers.map((i) => ({ x: i + (A() % 2) - (B() % 2) })),
-          E: () => hard(C() + A() + D().at(0).x, 'E'),
-          F: () => hard(D().at(2).x || B(), 'F'),
-          G: () => C() + (C() || E() % 2) + D().at(4).x + F(),
-          H: () => res.push(hard(G(), 'H')),
-          I: () => res.push(G()),
-          J: () => res.push(hard(F(), 'J')),
-        })
+      const Solo = molWirePkg.default?.$mol_wire_solo ?? molWirePkg.$mol_wire_solo
+      const Fiber = molWirePkg.default?.$mol_wire_fiber ?? molWirePkg.$mol_wire_fiber
+      const mem = (proto, key) => {
+        const desc = Object.getOwnPropertyDescriptor(proto, key)
+        Object.defineProperty(proto, key, Solo(proto, key, desc))
+      }
 
+      return measureEngine('$mol ($mol_wire_solo)', ({ hard, res }) => {
+        class App {
+          A(next = 0) {
+            return next
+          }
+          B(next = 0) {
+            return next
+          }
+          C() {
+            return (this.A() % 2) + (this.B() % 2)
+          }
+          D() {
+            return numbers.map((i) => ({ x: i + (this.A() % 2) - (this.B() % 2) }))
+          }
+          E() {
+            return hard(this.C() + this.A() + this.D().at(0).x, 'E')
+          }
+          F() {
+            return hard(this.D().at(2).x || this.B(), 'F')
+          }
+          G() {
+            return this.C() + (this.C() || this.E() % 2) + this.D().at(4).x + this.F()
+          }
+          H() {
+            res.push(hard(this.G(), 'H'))
+          }
+          I() {
+            res.push(this.G())
+          }
+          J() {
+            res.push(hard(this.F(), 'J'))
+          }
+        }
+
+        for (const key of ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']) {
+          mem(App.prototype, key)
+        }
+
+        const app = new App()
         const tick = () => {
-          H()
-          I()
-          J()
+          app.H()
+          app.I()
+          app.J()
+          if (typeof Fiber?.sync === 'function') Fiber.sync()
         }
         tick()
+
         return (i) => {
           res.length = 3
-          B(1)
-          A(1 + i * 2)
+          app.B(1)
+          app.A(1 + i * 2)
           tick()
-          A(2 + i * 2)
-          B(2)
+          app.A(2 + i * 2)
+          app.B(2)
           tick()
         }
       })
