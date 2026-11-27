@@ -541,15 +541,15 @@ const ENGINES = [
     pkg: '@reatom/core',
     name: 'Reatom (@reatom/core)',
     run: async () => {
-      const { atom, computed, notify } = await import('@reatom/core')
+      const { atom, computed, notify, withMemo } = await import('@reatom/core')
       return measureEngine('Reatom (@reatom/core)', ({ hard, res }) => {
         const A = atom(0, 'A')
         const B = atom(0, 'B')
         const C = computed(() => (A() % 2) + (B() % 2), 'C')
         const D = computed(
           () => numbers.map((i) => ({ x: i + (A() % 2) - (B() % 2) })),
-          { name: 'D', isEqual: equals }
-        )
+          'D'
+        ).extend(withMemo(equals))
         const E = computed(() => hard(C() + A() + D().at(0).x, 'E'), 'E')
         const F = computed(() => hard(D().at(2).x || B(), 'F'), 'F')
         const G = computed(() => {
@@ -612,6 +612,54 @@ const ENGINES = [
       })
     },
   },
+  {
+    id: 'svelte5',
+    pkg: 'svelte',
+    name: 'Svelte 5 (Runes)',
+    run: async () => {
+      const svelte = await import('svelte')
+      const $ = await import('svelte/internal/client')
+      const createSignal = $.state ?? $.mutable_source ?? $.source
+      const doFlush = svelte.flushSync ?? $.flush
+
+      return measureEngine('Svelte 5 (Runes)', ({ hard, res }) => {
+        const A = createSignal(0)
+        const B = createSignal(0)
+        const C = $.derived(() => ($.get(A) % 2) + ($.get(B) % 2))
+        const D = $.derived(() =>
+          numbers.map((i) => ({ x: i + ($.get(A) % 2) - ($.get(B) % 2) }))
+        )
+        const E = $.derived(() => hard($.get(C) + $.get(A) + $.get(D).at(0).x, 'E'))
+        const F = $.derived(() => hard($.get(D).at(2).x || $.get(B), 'F'))
+        const G = $.derived(
+          () => $.get(C) + ($.get(C) || $.get(E) % 2) + $.get(D).at(4).x + $.get(F)
+        )
+
+        $.effect_root(() => {
+          $.effect(() => {
+            res.push(hard($.get(G), 'H'))
+          })
+          $.effect(() => {
+            res.push($.get(G))
+          })
+          $.effect(() => {
+            res.push(hard($.get(F), 'J'))
+          })
+        })
+        doFlush()
+
+        return (i) => {
+          res.length = 3
+          $.set(B, 1)
+          $.set(A, 1 + i * 2)
+          doFlush()
+          $.set(A, 2 + i * 2)
+          $.set(B, 2)
+          doFlush()
+        }
+      })
+    },
+  },
 ]
 // ============================================================================
 // Режим дочернего воркера (--only=) vs Оркестратор
@@ -658,7 +706,7 @@ if (onlyArg) {
 
       execFile(
         process.execPath,
-        ['--expose-gc', scriptPath, `--only=${ engine.id }`],
+        ['--expose-gc', '--conditions=browser', scriptPath, `--only=${ engine.id }`],
         { encoding: 'utf8' },
         (err, stdout, stderr) => {
           if (timer) clearInterval(timer)

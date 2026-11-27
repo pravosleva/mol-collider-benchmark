@@ -29,6 +29,11 @@ try {
   const { Resvg } = await import('@resvg/resvg-js')
   const resvg = new Resvg(svgContent, {
     fitTo: { mode: 'zoom', value: 2 },
+    font: {
+      loadSystemFonts: true,
+      defaultFontFamily: 'DejaVu Sans',
+      monospaceFamily: 'DejaVu Sans Mono',
+    },
   })
   const pngBuffer = resvg.render().asPng()
   fs.writeFileSync(pngPath, pngBuffer)

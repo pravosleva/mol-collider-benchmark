@@ -45,6 +45,7 @@ PACKAGES=(
   "effector"
   "mobx"
   "mol_wire_lib"
+  "svelte"
 )
 
 # Функция сохранения установленных пакетов в локальный кэш ~/.cache/mol-collider

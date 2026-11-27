@@ -61,13 +61,13 @@ const rowsSvg = data.results
     return [
       `  <g transform="translate(0, ${ y })">`,
       `    <rect x="20" y="2" width="${ width - 40 }" height="${ rowHeight - 6 }" rx="8" fill="${ rowBg }" />`,
-      `    <text x="42" y="34" fill="${ rankColor }" font-family="monospace" font-size="15" font-weight="700">#${ escapeXml(r.Rank) }</text>`,
-      `    <text x="80" y="27" fill="#f0f6fc" font-family="sans-serif" font-size="14" font-weight="${ fontWeight }">${ escapeXml(titleText) }</text>`,
-      `    <text x="80" y="45" fill="#8b949e" font-family="monospace" font-size="11">${ escapeXml(subtitle) }${ deltaSpan }</text>`,
+      `    <text x="42" y="34" fill="${ rankColor }" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#${ escapeXml(r.Rank) }</text>`,
+      `    <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="${ fontWeight }">${ escapeXml(titleText) }</text>`,
+      `    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">${ escapeXml(subtitle) }${ deltaSpan }</text>`,
       `    <rect x="${ barStartX }" y="21" width="${ barMaxWidth }" height="12" rx="4" fill="#21262d" />`,
       `    <rect x="${ barStartX }" y="21" width="${ barWidth }" height="12" rx="4" fill="${ barColor }" />`,
-      `    <text x="${ barStartX + barMaxWidth + 16 }" y="32" fill="#f0f6fc" font-family="monospace" font-size="13" font-weight="700">${ escapeXml(opsVal.toLocaleString('en-US')) } ops/s</text>`,
-      `    <text x="${ width - 38 }" y="32" text-anchor="end" fill="${ rankColor }" font-family="monospace" font-size="13" font-weight="700">${ escapeXml(r.Ratio) }</text>`,
+      `    <text x="${ barStartX + barMaxWidth + 16 }" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">${ escapeXml(opsVal.toLocaleString('en-US')) } ops/s</text>`,
+      `    <text x="${ width - 38 }" y="32" text-anchor="end" fill="${ rankColor }" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">${ escapeXml(r.Ratio) }</text>`,
       `  </g>`,
     ].join('\n')
   })
@@ -81,12 +81,12 @@ const svgContent = [
   `<?xml version="1.0" encoding="UTF-8"?>`,
   `<svg xmlns="${ SVG_NS }" width="${ width }" height="${ height }" viewBox="0 0 ${ width } ${ height }">`,
   `  <rect width="${ width }" height="${ height }" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.5" />`,
-  `  <text x="32" y="38" fill="#f0f6fc" font-family="sans-serif" font-size="20" font-weight="700">$bog_collider Benchmark - Throughput &amp; Memory</text>`,
-  `  <text x="32" y="62" fill="#8b949e" font-family="monospace" font-size="12">${ escapeXml(headerSub1) }</text>`,
-  `  <text x="32" y="82" fill="#8b949e" font-family="monospace" font-size="12">${ escapeXml(headerSub2) }</text>`,
+  `  <text x="32" y="38" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="20" font-weight="700">$bog_collider Benchmark - Throughput &amp; Memory</text>`,
+  `  <text x="32" y="62" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="12">${ escapeXml(headerSub1) }</text>`,
+  `  <text x="32" y="82" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="12">${ escapeXml(headerSub2) }</text>`,
   rowsSvg,
-  `  <text x="32" y="${ height - 36 }" fill="#6e7681" font-family="monospace" font-size="11">${ escapeXml(footerLine1) }</text>`,
-  `  <text x="32" y="${ height - 18 }" fill="#6e7681" font-family="monospace" font-size="11">Delta vs #1: <tspan fill="#8b949e">&lt;10 μs noise</tspan> | <tspan fill="#f59e0b">10–30 μs minor overhead</tspan> | <tspan fill="#f87171">&gt;30 μs extra hard() calls</tspan></text>`,
+  `  <text x="32" y="${ height - 36 }" fill="#6e7681" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">${ escapeXml(footerLine1) }</text>`,
+  `  <text x="32" y="${ height - 18 }" fill="#6e7681" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">Delta vs #1: <tspan fill="#8b949e">&lt;10 μs noise</tspan> | <tspan fill="#f59e0b">10–30 μs minor overhead</tspan> | <tspan fill="#f87171">&gt;30 μs extra hard() calls</tspan></text>`,
   `</svg>`,
 ].join('\n') + '\n'
 
