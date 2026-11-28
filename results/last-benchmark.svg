@@ -8,112 +8,112 @@
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#10b981" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#1</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="700">@pravosleva/reactive-engine v3.0.5</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 76.2 B/it | Ret: 0.022 B/it</text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 81.1 B/it | Ret: 0.022 B/it</text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#10b981" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">8,476 ops/s</text>
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">5,165 ops/s</text>
     <text x="882" y="32" text-anchor="end" fill="#10b981" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.00×</text>
   </g>
   <g transform="translate(0, 163)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#2</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">@angular/core (Signals) v22.3.0</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 357.5 B/it | Ret: 0.026 B/it | <tspan fill="#8b949e">+0.93 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 321.3 B/it | Ret: 0.026 B/it | <tspan fill="#8b949e">+4.78 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="238" height="12" rx="4" fill="#3b82f6" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">8,410 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.01×</text>
+    <rect x="435" y="21" width="234" height="12" rx="4" fill="#3b82f6" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">5,041 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.02×</text>
   </g>
   <g transform="translate(0, 221)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#3</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">@vue/reactivity v3.5.46</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 164.9 B/it | Ret: 0.029 B/it | <tspan fill="#f59e0b">+11.47 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 218.9 B/it | Ret: 0.029 B/it | <tspan fill="#8b949e">+6.20 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="219" height="12" rx="4" fill="#6366f1" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">7,725 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.10×</text>
+    <rect x="435" y="21" width="233" height="12" rx="4" fill="#6366f1" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">5,005 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.03×</text>
   </g>
   <g transform="translate(0, 279)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#4</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">MobX (comparer.structural) v7.1.7</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 0 B/it | Ret: 0.384 B/it | <tspan fill="#f59e0b">+17.47 μs/it</tspan></text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">MobX (compareStructural) v7.1.7</text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 350.6 B/it | Ret: 0.384 B/it | <tspan fill="#f59e0b">+10.83 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="209" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">7,383 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.15×</text>
+    <rect x="435" y="21" width="227" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">4,892 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.06×</text>
   </g>
   <g transform="translate(0, 337)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#5</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">$mol ($mol_wire_solo) v1.0.1855</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 1409.7 B/it | Ret: 0.000 B/it | <tspan fill="#f59e0b">+26.83 μs/it</tspan></text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">Reatom (@reatom/core) v1001.3.0</text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 206.4 B/it | Ret: 336.029 B/it | <tspan fill="#f59e0b">+21.45 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="196" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">6,905 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.23×</text>
+    <rect x="435" y="21" width="216" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">4,650 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.11×</text>
   </g>
   <g transform="translate(0, 395)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#6</text>
-    <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">Reatom (@reatom/core) v1001.3.0</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 138.4 B/it | Ret: 336.029 B/it | <tspan fill="#f87171">+30.33 μs/it</tspan></text>
+    <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">$mol ($mol_wire_solo) v1.0.1855</text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 3 (H,E,H) | Net: 1392.7 B/it | Ret: 0.000 B/it | <tspan fill="#f87171">+55.63 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="191" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">6,742 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.26×</text>
+    <rect x="435" y="21" width="186" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">4,012 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.29×</text>
   </g>
   <g transform="translate(0, 453)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#7</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">SolidJS 2 (@solidjs/signals) v2.0.4</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 4 (E,H,E,H) | Net: 741.8 B/it | Ret: 381.259 B/it | <tspan fill="#f87171">+70.29 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 4 (E,H,E,H) | Net: 776.3 B/it | Ret: 381.259 B/it | <tspan fill="#f87171">+82.05 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="150" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">5,311 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.60×</text>
+    <rect x="435" y="21" width="169" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">3,628 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.42×</text>
   </g>
   <g transform="translate(0, 511)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#8</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">alien-signals v3.2.1</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 537.5 B/it | Ret: 0.029 B/it | <tspan fill="#f87171">+90.89 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 609.2 B/it | Ret: 0.029 B/it | <tspan fill="#f87171">+119.71 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="136" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">4,787 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.77×</text>
+    <rect x="435" y="21" width="148" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">3,192 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.62×</text>
   </g>
   <g transform="translate(0, 569)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#9</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">@preact/signals-core v1.14.5</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 117.3 B/it | Ret: 0.029 B/it | <tspan fill="#f87171">+91.14 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 160 B/it | Ret: 0.029 B/it | <tspan fill="#f87171">+122.47 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="135" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">4,782 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.77×</text>
+    <rect x="435" y="21" width="147" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">3,164 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.63×</text>
   </g>
   <g transform="translate(0, 627)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#0d1117" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#10</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">Svelte 5 (Runes) v5.59.2</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 5896.9 B/it | Ret: 5600.046 B/it | <tspan fill="#f87171">+118.52 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 5 (F,H,E,F,H) | Net: 5932.3 B/it | Ret: 5600.046 B/it | <tspan fill="#f87171">+148.40 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="120" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">4,228 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">2.00×</text>
+    <rect x="435" y="21" width="136" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">2,924 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">1.77×</text>
   </g>
   <g transform="translate(0, 685)">
     <rect x="20" y="2" width="880" height="52" rx="8" fill="#161b22" />
     <text x="42" y="34" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="15" font-weight="700">#11</text>
     <text x="80" y="27" fill="#f0f6fc" font-family="'DejaVu Sans', 'Inter', 'Liberation Sans', sans-serif" font-size="14" font-weight="500">Effector v23.5.2</text>
-    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 6 (E,F,H,E,F,H) | Net: 1506.1 B/it | Ret: 67.877 B/it | <tspan fill="#f87171">+141.73 μs/it</tspan></text>
+    <text x="80" y="45" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">hard(): 6 (E,F,H,E,F,H) | Net: 1965.9 B/it | Ret: 67.877 B/it | <tspan fill="#f87171">+239.50 μs/it</tspan></text>
     <rect x="435" y="21" width="240" height="12" rx="4" fill="#21262d" />
-    <rect x="435" y="21" width="109" height="12" rx="4" fill="#64748b" />
-    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">3,850 ops/s</text>
-    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">2.20×</text>
+    <rect x="435" y="21" width="107" height="12" rx="4" fill="#64748b" />
+    <text x="691" y="32" fill="#f0f6fc" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">2,309 ops/s</text>
+    <text x="882" y="32" text-anchor="end" fill="#8b949e" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="13" font-weight="700">2.24×</text>
   </g>
-  <text x="32" y="777" fill="#6e7681" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">Generated: 2026-11-27T14:46:39.326Z | Graph: A,B -&gt; C,D -&gt; E,F -&gt; G -&gt; H,I,J (hard = fib(18))</text>
+  <text x="32" y="777" fill="#6e7681" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">Generated: 2026-11-28T11:37:57.357Z | Graph: A,B -&gt; C,D -&gt; E,F -&gt; G -&gt; H,I,J (hard = fib(18))</text>
   <text x="32" y="795" fill="#6e7681" font-family="'DejaVu Sans Mono', 'JetBrains Mono', 'Fira Code', 'Liberation Mono', monospace" font-size="11">Delta vs #1: <tspan fill="#8b949e">&lt;10 μs noise</tspan> | <tspan fill="#f59e0b">10–30 μs minor overhead</tspan> | <tspan fill="#f87171">&gt;30 μs extra hard() calls</tspan></text>
 </svg>

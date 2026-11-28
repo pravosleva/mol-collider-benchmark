@@ -306,15 +306,15 @@ const ENGINES = [
   {
     id: 'mobx',
     pkg: 'mobx',
-    name: 'MobX (comparer.structural)',
+    name: 'MobX (compareStructural)',
     run: async () => {
       const mobxPkg = await import('mobx')
       const mobx = mobxPkg.default ?? mobxPkg
-      const { observable, computed, autorun, runInAction, comparer, configure } = mobx
+      const { observable, computed, autorun, runInAction, compareStructural, comparer, configure } = mobx
       if (typeof configure === 'function') configure({ enforceActions: 'never' })
-      const structEquals = comparer?.structural ?? equals
+      const structEquals = compareStructural ?? comparer?.structural ?? equals
 
-      return measureEngine('MobX (comparer.structural)', ({ hard, res }) => {
+      return measureEngine('MobX (compareStructural)', ({ hard, res }) => {
         const A = observable.box(0)
         const B = observable.box(0)
         const C = computed(() => (A.get() % 2) + (B.get() % 2))
